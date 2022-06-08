@@ -9,7 +9,6 @@ public class App {
 	
 	System.out.println("Hola, de nuevo soy Bryan");
 	
-	System.out.println("Hola, de nuevo soy Rolo");
-	
+	System.out.println("Hola Christofer");
 	}
 }

@@ -1,10 +1,13 @@
 package Main;
 
+import Logic.Controler;
+
 public class App {
 
 	public static void main(String[] args) {
 
-
+		new Controler();
+		
 		System.out.println("Hola soy Bryan");
 
 		System.out.println("Hola, de nuevo soy Bryan");

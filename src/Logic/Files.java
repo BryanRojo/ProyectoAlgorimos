@@ -54,4 +54,24 @@ public class Files {
 	    }catch(IOException e) {}
 	    	return condition;
 	}
+	
+	public String[] returnData(String []data, String user) {
+		try {
+	    	FileReader reader = new FileReader(file);
+	    	BufferedReader br = new BufferedReader(reader);
+	    	String line="";
+	    	while((line=br.readLine())!=null){ 
+		    		String split [] = line.split(",");
+		    		if(user.equals(split[0])) {
+		    		data[0] = split[0];
+		    		data[1] = split[1];
+		    		data[2] = split[2];
+		    		data[3] = split[3];
+		    		data[4] = split[6];
+		    		break;
+	    		}
+	    	}
+	    }catch(IOException e) {}
+	    	return data;
+	}
 }

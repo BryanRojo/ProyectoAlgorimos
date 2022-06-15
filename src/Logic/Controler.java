@@ -19,12 +19,14 @@ public class Controler implements ActionListener{
 	private String password = "";
 	private String name = "";
 	private boolean condition = false, condition2 = false;
+	private String []data;
 
 	public Controler() {
 		start = new Start();
 		newUser = new NewUser();
 		principal = new Principal();
 		file = new Files();
+		data = new String[5];
 		init();
 	}
 	
@@ -42,7 +44,7 @@ public class Controler implements ActionListener{
 		}else {
 			JOptionPane.showMessageDialog(null, "Passwords do not match, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
 			}
-		if(newUser.getTName().getText().equals("") || newUser.getTLastName().getText().equals("")||newUser.getTAdress().getText().equals("") || this.password.equals("") || newUser.getTPhoneNumber().getText().equals("")) {
+		if(newUser.getTName().getText().equals("") || newUser.getTName().getText().equals("")||newUser.getTAdress().getText().equals("") || this.password.equals("") || newUser.getTPhoneNumber().getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "One or more fields are empty, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
 		}else {
 			this.condition2 = true;
@@ -51,11 +53,11 @@ public class Controler implements ActionListener{
 	
 	private void saveUser() {
 		if(this.condition== true && condition2 == true) {
-		User user = new User(newUser.getTName().getText(), newUser.getTLastName().getText(), newUser.getTAdress().getText(), this.password, newUser.getTPhoneNumber().getText());
-		this.name = user.getName();
+		User user = new User(newUser.getTUserName().getText(), newUser.getTName().getText(),newUser.getTPaymentMethod().getText(), newUser.getTEmail().getText(), newUser.getTAdress().getText(), this.password, newUser.getTPhoneNumber().getText());
+		this.name = user.getUserName();
 		file.addUser(user);
 		file.saveNamePassword(this.name, this.password);
-		JOptionPane.showMessageDialog(null, "Saved successfully.\nYour user is: "+ user.getName()+"\nYour password is: "+user.getPassword());	
+		JOptionPane.showMessageDialog(null, "Saved successfully.\nYour user is: "+ user.getUserName()+"\nYour password is: "+user.getPassword());	
 		}
 	}
 	
@@ -74,6 +76,23 @@ public class Controler implements ActionListener{
 			}
 		}
 	}
+	
+	private void extractData() {
+		file.returnData(this.data, start.getTUsername().getText());
+		principal.getLUserName().setText("User: "+this.data[0]);
+		principal.getLName().setText("Name: "+this.data[1]);
+		principal.getLPaymentMethod().setText("Payment method: "+this.data[2]);
+		principal.getLEmail().setText("Email: "+this.data[3]);
+		principal.getLCelephoneNumber().setText("Celephone number: "+this.data[4]);
+		principal.getLStars().setText("Stars: ");
+		principal.getLTrips().setText("Trips: ");
+	}
+	
+	private void goBack() {
+		newUser.setVisible(false);
+		principal.setVisible(false);
+		start.setVisible(true);
+	}
 
 	private void visible() {
 		newUser.setVisible(true);
@@ -84,13 +103,17 @@ public class Controler implements ActionListener{
 		if(this.condition == true && this.condition2 == true) {
 			newUser.setVisible(false);
 			start.setVisible(true);
-			newUser.getTName().setText(null);
-			newUser.getTLastName().setText(null); 
+			newUser.getTUserName().setText(null);
+			newUser.getTName().setText(null); 
 			newUser.getTAdress().setText(null);
 			newUser.getTPassword().setText(null);
 			newUser.getTConfirmPassword().setText(null);
 			newUser.getTPhoneNumber().setText(null);
 		}
+	}
+	
+	private void termsAndConditions() {
+		JOptionPane.showMessageDialog(null,"Application created in java language for academic purposes only, UCR 2022, business informatics.", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	private void init() {
@@ -112,11 +135,44 @@ public class Controler implements ActionListener{
 			}
 		});
 		
+		newUser.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				goBack();
+			}
+		});
+		
 		start.getBEnter().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				verifyUser();
+				extractData();
+			}
+		});
+		
+		principal.getBAdmin().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		principal.getBTerms().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				termsAndConditions();
+			}
+		});
+		
+		principal.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				goBack();
 			}
 		});
 		

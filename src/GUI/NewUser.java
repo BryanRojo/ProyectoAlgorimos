@@ -1,4 +1,5 @@
 package GUI;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -6,36 +7,50 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class NewUser extends JFrame {
 
-	private JLabel  lNewEntry, lName, lLastName, lPhoneNumber, lAdress, lPassword, lConfirmPassword;
-	private JTextField tName, tLastName, tPhoneNumber, tAdress, tPassword, tConfirmPassword;
-	private JButton bVerify;
+	private JLabel  lNewEntry, lUserName, lName, lPaymentMethod, lEmail, lPhoneNumber, lAdress, lPassword, lConfirmPassword;
+	private JTextField tUserName, tName,tPaymentMethod, tEmail, tPhoneNumber, tAdress, tPassword, tConfirmPassword;
+	private JButton bVerify, bBack;
+	
 	private Font font = new Font("Times New Roman", Font.PLAIN, 22);
 	private Font font3 = new Font("Calibri", Font.ITALIC, 16);
 	
+	private PanelNewUser panel = new PanelNewUser();
+	
 	public NewUser() {
 		
-		add(getLNewEntry());
-		add(getLName());
-		add(getLLastName());
-		add(getLAdress());
-		add(getLPhoneNumber());
-		add(getLPassword());
-		add(getLConfirmPassword());
-		add(getTName());
-		add(getTLastName());
-		add(getTAdress());
-		add(getTPhoneNumber());
-		add(getTPassword());
-		add(getTConfirmPassword());
-		add(getBVerify());
+		panel.add(getLNewEntry());
+		panel.add(getLUserName());
+		panel.add(getLName());
+		panel.add(getLPaymentMethod());
+		panel.add(getLEmail());
+		panel.add(getLAdress());
+		panel.add(getLPhoneNumber());
+		panel.add(getLPassword());
+		panel.add(getLConfirmPassword());
 		
-		setLayout(null);
+		panel.add(getTUserName());
+		panel.add(getTName());
+		panel.add(getTPaymentMethod());
+		panel.add(getTEmail());
+		panel.add(getTAdress());
+		panel.add(getTPhoneNumber());
+		panel.add(getTPassword());
+		panel.add(getTConfirmPassword());
+		
+		panel.add(getBVerify());
+		panel.add(getBBack());
+		
+		panel.setLayout(new BorderLayout(0,0));
+		panel.setBorder(new EmptyBorder(5,5,5,5));
 		setTitle("New User");
-		setSize(250,500);
+		setContentPane(panel);
+		setBounds(100,100,800,480);
 		//setVisible(true);
+		setResizable(false);
 		getContentPane().setBackground(new Color(246,187,166));
 		setLocationRelativeTo(null);
 	}
@@ -51,34 +66,56 @@ public class NewUser extends JFrame {
 		return lNewEntry;
 	}
 	
+	public JLabel getLUserName() {
+		if(lUserName == null) {
+			lUserName = new JLabel();
+			lUserName.setForeground(Color.white);
+			lUserName.setText("User name:");
+			lUserName.setBounds(180,95,100,80);
+			lUserName.setFont(font3);
+		}
+		return lUserName;
+	}
+	
 	public JLabel getLName() {
 		if(lName == null) {
 			lName = new JLabel();
-			lName.setForeground(Color.black);
-			lName.setText("Name:");
-			lName.setBounds(40,55,100,80);
+			lName.setForeground(Color.white);
+			lName.setText("Name and last name:");
+			lName.setBounds(180,155,180,80);
 			lName.setFont(font3);
 		}
 		return lName;
 	}
 	
-	public JLabel getLLastName() {
-		if(lLastName == null) {
-			lLastName = new JLabel();
-			lLastName.setForeground(Color.black);
-			lLastName.setText("Last name:");
-			lLastName.setBounds(40,105,100,80);
-			lLastName.setFont(font3);
+	public JLabel getLPaymentMethod() {
+		if(lPaymentMethod == null) {
+			lPaymentMethod = new JLabel();
+			lPaymentMethod.setForeground(Color.white);
+			lPaymentMethod.setText("Payment method:");
+			lPaymentMethod.setBounds(450,95,150,80);
+			lPaymentMethod.setFont(font3);
 		}
-		return lLastName;
+		return lPaymentMethod;
+	}
+	
+	public JLabel getLEmail() {
+		if(lEmail == null) {
+			lEmail = new JLabel();
+			lEmail.setForeground(Color.white);
+			lEmail.setText("Email:");
+			lEmail.setBounds(450,155,100,80);
+			lEmail.setFont(font3);
+		}
+		return lEmail;
 	}
 	
 	public JLabel getLPhoneNumber() {
 		if(lPhoneNumber == null) {
 			lPhoneNumber = new JLabel();
-			lPhoneNumber.setForeground(Color.black);
+			lPhoneNumber.setForeground(Color.white);
 			lPhoneNumber.setText("Phone number:");
-			lPhoneNumber.setBounds(40,155,100,80);
+			lPhoneNumber.setBounds(180,215,100,80);
 			lPhoneNumber.setFont(font3);
 		}
 		return lPhoneNumber;
@@ -87,9 +124,9 @@ public class NewUser extends JFrame {
 	public JLabel getLAdress() {
 		if(lAdress == null) {
 			lAdress = new JLabel();
-			lAdress.setForeground(Color.black);
+			lAdress.setForeground(Color.white);
 			lAdress.setText("Adress:");
-			lAdress.setBounds(40,205,100,80);
+			lAdress.setBounds(180,275,100,80);
 			lAdress.setFont(font3);
 		}
 		return lAdress;
@@ -98,9 +135,9 @@ public class NewUser extends JFrame {
 	public JLabel getLPassword() {
 		if(lPassword == null) {
 			lPassword = new JLabel();
-			lPassword.setForeground(Color.black);
+			lPassword.setForeground(Color.white);
 			lPassword.setText("New password:");
-			lPassword.setBounds(40,255,100,80);
+			lPassword.setBounds(450,215,100,80);
 			lPassword.setFont(font3);
 		}
 		return lPassword;
@@ -109,12 +146,23 @@ public class NewUser extends JFrame {
 	public JLabel getLConfirmPassword() {
 		if(lConfirmPassword == null) {
 			lConfirmPassword = new JLabel();
-			lConfirmPassword.setForeground(Color.black);
+			lConfirmPassword.setForeground(Color.white);
 			lConfirmPassword.setText("Confirm password:");
-			lConfirmPassword.setBounds(40,305,120,80);
+			lConfirmPassword.setBounds(450,275,120,80);
 			lConfirmPassword.setFont(font3);
 		}
 		return lConfirmPassword;
+	}
+	
+	public JTextField getTUserName() {
+		if(tUserName == null) {
+			tUserName = new JTextField();
+			tUserName.setForeground(Color.black);
+			tUserName.setBackground(Color.white);
+			tUserName.setBounds(190,145,120,20);
+			tUserName.setFont(font3);
+		}
+		return tUserName;
 	}
 	
 	public JTextField getTName() {
@@ -122,21 +170,32 @@ public class NewUser extends JFrame {
 			tName = new JTextField();
 			tName.setForeground(Color.black);
 			tName.setBackground(Color.white);
-			tName.setBounds(55,105,120,20);
+			tName.setBounds(190,205,120,20);
 			tName.setFont(font3);
 		}
 		return tName;
 	}
 	
-	public JTextField getTLastName() {
-		if(tLastName == null) {
-			tLastName = new JTextField();
-			tLastName.setForeground(Color.black);
-			tLastName.setBackground(Color.white);
-			tLastName.setBounds(55,155,120,20);
-			tLastName.setFont(font3);
+	public JTextField getTPaymentMethod() {
+		if(tPaymentMethod == null) {
+			tPaymentMethod = new JTextField();
+			tPaymentMethod.setForeground(Color.black);
+			tPaymentMethod.setBackground(Color.white);
+			tPaymentMethod.setBounds(460,145,120,20);
+			tPaymentMethod.setFont(font3);
 		}
-		return tLastName;
+		return tPaymentMethod;
+	}
+	
+	public JTextField getTEmail() {
+		if(tEmail == null) {
+			tEmail = new JTextField();
+			tEmail.setForeground(Color.black);
+			tEmail.setBackground(Color.white);
+			tEmail.setBounds(460,205,120,20);
+			tEmail.setFont(font3);
+		}
+		return tEmail;
 	}
 	
 	public JTextField getTPhoneNumber() {
@@ -144,7 +203,7 @@ public class NewUser extends JFrame {
 			tPhoneNumber = new JTextField();
 			tPhoneNumber.setForeground(Color.black);
 			tPhoneNumber.setBackground(Color.white);
-			tPhoneNumber.setBounds(55,205,120,20);
+			tPhoneNumber.setBounds(190,265,120,20);
 			tPhoneNumber.setFont(font3);
 			}
 		return tPhoneNumber;
@@ -155,7 +214,7 @@ public class NewUser extends JFrame {
 			tAdress = new JTextField();
 			tAdress.setForeground(Color.black);
 			tAdress.setBackground(Color.white);
-			tAdress.setBounds(55,255,120,20);
+			tAdress.setBounds(190,325,120,20);
 			tAdress.setFont(font3);
 		}
 		return tAdress;
@@ -166,7 +225,7 @@ public class NewUser extends JFrame {
 			tPassword = new JTextField();
 			tPassword.setForeground(Color.black);
 			tPassword.setBackground(Color.white);
-			tPassword.setBounds(55,305,120,20);
+			tPassword.setBounds(460,265,120,20);
 			tPassword.setFont(font3);
 		}
 		return tPassword;
@@ -176,7 +235,7 @@ public class NewUser extends JFrame {
 			tConfirmPassword = new JTextField();
 			tConfirmPassword.setForeground(Color.black);
 			tConfirmPassword.setBackground(Color.white);
-			tConfirmPassword.setBounds(55,355,120,20);
+			tConfirmPassword.setBounds(460,325,120,20);
 			tConfirmPassword.setFont(font3);
 		}
 		return tConfirmPassword;
@@ -188,9 +247,21 @@ public class NewUser extends JFrame {
 			bVerify.setForeground(Color.white);
 			bVerify.setBackground(Color.black);
 			bVerify.setText("Verify");
-			bVerify.setBounds(67,405,97,30);
+			bVerify.setBounds(345,360,97,30);
 			bVerify.setFont(font3);
 		}
 		return bVerify;
+	}
+	
+	public JButton getBBack() {
+		if(bBack == null) {
+			bBack = new JButton();
+			bBack.setForeground(Color.white);
+			bBack.setBackground(Color.black);
+			bBack.setText("Go back");
+			bBack.setBounds(693,410,89,30);
+			bBack.setFont(font3);
+		}
+		return bBack;
 	}
 }

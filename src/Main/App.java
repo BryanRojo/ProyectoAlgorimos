@@ -1,5 +1,7 @@
 package Main;
 
+import GUI.NewUser;
+import GUI.Principal;
 import Logic.Controler;
 
 public class App {
@@ -7,7 +9,9 @@ public class App {
 	public static void main(String[] args) {
 
 		new Controler();
-		
+		//new Principal();
+		//new NewUser();
+		/*
 		System.out.println("Hola soy Bryan");
 
 		System.out.println("Hola, de nuevo soy Bryan");
@@ -19,5 +23,6 @@ public class App {
 		}
 		
 		System.out.println("Cambios en el main");
-	}
+	}*/
+}
 }

@@ -1,18 +1,30 @@
 package Domain;
 
 public class User {
+	private String userName;
 	private String name;
-	private String lastName;
+	private String paymentMethod;
+	private String email;
 	private String adress;
 	private String password;
 	private String phoneNumber;
 	
-	public User(String name, String lastName, String adress, String password, String phoneNumber) {
+	public User(String Username, String name,String paymentMethod, String email, String adress, String password, String phoneNumber) {
+		this.userName = Username;
 		this.name = name;
-		this.lastName = lastName;
+		this.paymentMethod = paymentMethod;
+		this.email = email;
 		this.adress = adress;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getName() {
@@ -23,12 +35,20 @@ public class User {
 		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getPaymentMethod() {
+		return paymentMethod;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAdress() {
@@ -57,7 +77,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return  name+"," + lastName + "," + adress + "," + password
+		return  userName+"," + name + "," + paymentMethod + "," + email + "," + adress + "," + password
 				+ "," + phoneNumber;
 	}	
 }

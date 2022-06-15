@@ -2,27 +2,24 @@ package Main;
 
 import GUI.NewUser;
 import GUI.Principal;
+import GUI.Ubers;
 import Logic.Controler;
+import Logic.ControllerUber;
+import Logic.UberType;
+import TDAListas.CircularDoubleLinkedList;
 
 public class App {
 
 	public static void main(String[] args) {
 
+
+
+
+		//si se quieren ver los ubers
+		//new ControllerUber();
 		new Controler();
 		//new Principal();
 		//new NewUser();
-		/*
-		System.out.println("Hola soy Bryan");
 
-		System.out.println("Hola, de nuevo soy Bryan");
-
-		System.out.println("Hola Christofer");
-
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i);
-		}
-		
-		System.out.println("Cambios en el main");
-	}*/
-}
+	}
 }

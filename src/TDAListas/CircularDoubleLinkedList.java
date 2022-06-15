@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class CircularDoubleLinkedList implements Lista, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	// Atributos
 	// 1) Refencia al principio de la lista y fin de la lista para hacer el enlace circular
 	private Nodo start, end;
 	private int cont; // lleva el control de la cantidad de nodos de la lista
-	
+	private String posicion;
+
 	public CircularDoubleLinkedList() {
 		this.start = this.end = null; // Representa el principio y fin de la lista
 		this.cont = 0;
+		this.posicion="";
 	} // Fin del constructor
 
 	public int getSize() throws ListaException {
@@ -35,6 +37,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 
 		if (aux == null) {
 			this.start = this.end = newNodo;
+			posicion=String.valueOf(this.start.getElement());
 		} else {
 			while (aux != this.end) {
 				aux = aux.getNext(); // mueve el aux al siguiente nodo;
@@ -109,7 +112,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 			this.cont--;
 		} else {
 			Nodo aux = this.start;
-			
+
 			while (aux != this.end) {
 				if (aux.getNext().getElement().equals(element)) {
 					aux.setNext(aux.getNext().getNext());
@@ -128,7 +131,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 	} // Fin de delete
 
 	public void delete(int position) {
-		
+
 		if (this.cont < position || position <= 0) {
 			throw new ListaException("La posiciï¿½n indicada no es vï¿½lida");
 		} else if (this.cont == 1 && position == 1) { // Que pasa si sï¿½lo queda un nodo y es el que desea eliminar
@@ -146,7 +149,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 				aux = aux.getNext();
 				contador++;
 			} // while
-			
+
 			aux.getBefore().setNext(aux.getNext()); 
 			aux.getNext().setBefore(aux.getBefore());
 			if (aux.getBefore().getNext() == this.start) {
@@ -154,7 +157,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 			}
 			this.cont--;
 		}
-		
+
 
 	}  // Fin de delete
 
@@ -181,6 +184,49 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		} // if/else externo
 	} // Fin de exists
 
+	public String imprimir() {
+		return this.posicion;
+	}
+	public void siguiente() {
+
+		if (isEmpty()) {
+			throw new ListaException("CircularDoubleLinkedList is empty");
+		} 
+		Nodo aux = this.start.getNext();
+		int a = 1;
+		while(a==1) {
+			System.out.println("Entro al while");
+			if(posicion.equals(aux.getElement())) {
+				System.out.println("Encontro: "+aux.getNext().getElement());
+				this.posicion=String.valueOf(aux.getNext().getElement());
+				a=2;
+			}else {
+				aux=aux.getNext();
+			}
+			
+		}
+
+	} // Fin de exists
+	public void anterior() {
+
+		if (isEmpty()) {
+			throw new ListaException("CircularDoubleLinkedList is empty");
+		} 
+		Nodo aux = this.start.getNext();
+		int a = 1;
+		while(a==1) {
+			System.out.println("Entro al while");
+			if(posicion.equals(aux.getElement())) {
+				this.posicion=String.valueOf(aux.getBefore().getElement());
+				a=2;
+			}else {
+				aux=aux.getNext();
+			}
+			
+		}
+
+	} // Fin de exists
+
 	public Object firstInList() {
 		return this.start.getElement();
 	} // Fin de firstInList
@@ -189,24 +235,23 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		return this.end.getElement();
 	} // Fin de lastInList
 
-	public String toString() {
-
+	public String toString1() {
+		String result = "";
 		if (isEmpty()) {
-			return "Lista vacï¿½a";
+			return "Lista vacía";
 		} else {
 
 			Nodo aux = this.start;
-			String result = "VALORES DE LA LISTA CIRCULAR DOBLEMENTE ENLAZADA\n";
-			result += "----------------------------------------\n";
+
 			while (aux != this.end) {
-				result += aux.getElement() + "<--->";
+				result += aux.getElement() + ",";
 				aux = aux.getNext();
 			}
-			result += this.end.getElement() + "<---->";
+			result += this.end.getElement() + ",";
 
-			return result;
+
 		}
-		
+		return result;
 	} // Fin de toString
 
 	public Nodo getStart() {
@@ -224,5 +269,5 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 	public void setEnd(Nodo end) {
 		this.end = end;
 	}
-		
+
 } // Fin de clase

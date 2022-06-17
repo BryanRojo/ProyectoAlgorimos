@@ -10,12 +10,12 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 	// 1) Refencia al principio de la lista y fin de la lista para hacer el enlace circular
 	private Nodo start, end;
 	private int cont; // lleva el control de la cantidad de nodos de la lista
-	private String posicion;
+	private String position;
 
 	public CircularDoubleLinkedList() {
 		this.start = this.end = null; // Representa el principio y fin de la lista
 		this.cont = 0;
-		this.posicion="";
+		this.position="";
 	} // Fin del constructor
 
 	public int getSize() throws ListaException {
@@ -37,7 +37,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 
 		if (aux == null) {
 			this.start = this.end = newNodo;
-			posicion=String.valueOf(this.start.getElement());
+			position=String.valueOf(this.start.getElement());
 		} else {
 			while (aux != this.end) {
 				aux = aux.getNext(); // mueve el aux al siguiente nodo;
@@ -184,10 +184,10 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		} // if/else externo
 	} // Fin de exists
 
-	public String imprimir() {
-		return this.posicion;
+	public String print() {
+		return this.position;
 	}
-	public void siguiente() {
+	public void nextt() {
 
 		if (isEmpty()) {
 			throw new ListaException("CircularDoubleLinkedList is empty");
@@ -196,9 +196,9 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		int a = 1;
 		while(a==1) {
 			System.out.println("Entro al while");
-			if(posicion.equals(aux.getElement())) {
+			if(position.equals(aux.getElement())) {
 				System.out.println("Encontro: "+aux.getNext().getElement());
-				this.posicion=String.valueOf(aux.getNext().getElement());
+				this.position=String.valueOf(aux.getNext().getElement());
 				a=2;
 			}else {
 				aux=aux.getNext();
@@ -207,7 +207,7 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		}
 
 	} // Fin de exists
-	public void anterior() {
+	public void beforee() {
 
 		if (isEmpty()) {
 			throw new ListaException("CircularDoubleLinkedList is empty");
@@ -216,8 +216,8 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		int a = 1;
 		while(a==1) {
 			System.out.println("Entro al while");
-			if(posicion.equals(aux.getElement())) {
-				this.posicion=String.valueOf(aux.getBefore().getElement());
+			if(position.equals(aux.getElement())) {
+				this.position=String.valueOf(aux.getBefore().getElement());
 				a=2;
 			}else {
 				aux=aux.getNext();

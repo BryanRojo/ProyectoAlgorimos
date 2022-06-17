@@ -1,31 +1,46 @@
 package Logic;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import Domain.CarImage;
 import Domain.User;
+import GUI.Car;
 import GUI.NewUser;
 import GUI.Principal;
 import GUI.Start;
 
-public class Controler implements ActionListener{
+public class Controler implements ActionListener, KeyListener{
 
 	private Start start;
 	private NewUser newUser;
 	private Principal principal;
 	private Files file;
+	private CarType type;
+	private Car car;
+	private CarImage image;
+	
 	private String password = "";
 	private String name = "";
 	private boolean condition = false, condition2 = false;
 	private String []data;
+	
+	private ImageIcon carX = new ImageIcon("/Images/CarX.png");
 
 	public Controler() {
 		start = new Start();
 		newUser = new NewUser();
 		principal = new Principal();
 		file = new Files();
+		type = new CarType();
+		car = new Car();
+		
 		data = new String[5];
 		init();
 	}
@@ -44,7 +59,7 @@ public class Controler implements ActionListener{
 		}else {
 			JOptionPane.showMessageDialog(null, "Passwords do not match, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
 			}
-		if(newUser.getTName().getText().equals("") || newUser.getTName().getText().equals("")||newUser.getTAdress().getText().equals("") || this.password.equals("") || newUser.getTPhoneNumber().getText().equals("")) {
+		if(newUser.getTUserName().getText().equals("") || newUser.getTName().getText().equals("")||newUser.getTPaymentMethod().getText().equals("")||newUser.getTEmail().getText().equals("")||newUser.getTAdress().getText().equals("") || this.password.equals("") || newUser.getTPhoneNumber().getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "One or more fields are empty, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
 		}else {
 			this.condition2 = true;
@@ -112,6 +127,16 @@ public class Controler implements ActionListener{
 		}
 	}
 	
+	private void visible3() {
+		car.setVisible(true);
+		principal.setVisible(false);
+	}
+	
+	private void visible4() {
+		principal.setVisible(true);
+		car.setVisible(false);
+	}
+	
 	private void termsAndConditions() {
 		JOptionPane.showMessageDialog(null,"Application created in java language for academic purposes only, UCR 2022, business informatics.", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -168,6 +193,14 @@ public class Controler implements ActionListener{
 			}
 		});
 		
+		principal.getBStart().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible3();
+			}
+		});
+		
 		principal.getBBack().addActionListener(new ActionListener() {
 
 			@Override
@@ -176,5 +209,59 @@ public class Controler implements ActionListener{
 			}
 		});
 		
+		car.getBChoose().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible4();
+			}
+		});
+		
+		car.getBChoose().addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP)
+					car.getLTest().setText(type.next());
+				if(e.getKeyCode() == KeyEvent.VK_DOWN)
+					car.getLTest().setText(type.before());
+				
+					car.getLTest().setText(type.print());
+					if(car.getLTest().getText().equals("Car X")) {
+						car.getLTest().setIcon(carX);
+						car.getLTest().setIconTextGap(1);
+						car.getLTest().setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+						car.getLTest().setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+						car.getLTest().setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+						car.getLTest().setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
+						
+					}
+			}
+			
+			@Override
+			public void keyTyped(KeyEvent e) {}
+			@Override
+			public void keyReleased(KeyEvent e) {}
+		});
+		
+		car.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible4();
+			}
+		});
+		
+		
 	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
+	@Override
+	public void keyPressed(KeyEvent e) {}
+
+	@Override
+	public void keyReleased(KeyEvent e) {}
+
 }

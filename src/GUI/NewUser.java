@@ -51,7 +51,6 @@ public class NewUser extends JFrame {
 		setBounds(100,100,800,480);
 		//setVisible(true);
 		setResizable(false);
-		getContentPane().setBackground(new Color(246,187,166));
 		setLocationRelativeTo(null);
 	}
 	

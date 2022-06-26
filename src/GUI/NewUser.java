@@ -16,13 +16,11 @@ import saveData.FileData;
 
 public class NewUser extends JFrame {
 	//Agregue esto: nicole
-    User user = new User();
-    FileData fileData = new FileData();
+	User user;
+    FileData fileData;
     DefaultTableModel modelTable;
-    Vector space = new Vector();
-    
-    
-
+    Vector space;
+   
 	private JLabel  lNewEntry, lUserName, lName, lPaymentMethod, lEmail, lPhoneNumber, lAdress, lPassword, lConfirmPassword;
 	private JTextField tUserName, tName,tPaymentMethod, tEmail, tPhoneNumber, tAdress, tPassword, tConfirmPassword;
 	private JButton bVerify, bBack;
@@ -33,6 +31,9 @@ public class NewUser extends JFrame {
 	private PanelNewUser panel = new PanelNewUser();
 	
 	public NewUser() {
+		user= new User("","","","","","","");
+		fileData= new FileData();
+		space= new Vector();
 		
 		panel.add(getLNewEntry());
 		panel.add(getLUserName());
@@ -266,13 +267,13 @@ public class NewUser extends JFrame {
 	
 	public JButton getBVerify() {
 		///agrego nicole: se adjunta fuente: https://www.youtube.com/watch?v=AH4lRZ5EvNI
-        String name = txt_Name.getText();
-        String userName = txt_UserName.getText();
-        String adress = txt_Adress.getText();
-        String email = txt_Email.getText();
-        String password = txt_Password.getText();
-        String phoneNumber = txt_PhoneNumber.getText();
-        String paymentMethod = txt_PaymentMethod.getText();
+        String name = tName.getText();
+        String userName = tUserName.getText();
+        String adress = tAdress.getText();
+        String email = tEmail.getText();
+        String password = tPassword.getText();
+        String phoneNumber = tPhoneNumber.getText();
+        String paymentMethod = tPaymentMethod.getText();
         
         user.setName(name);
         user.setUserName(userName);

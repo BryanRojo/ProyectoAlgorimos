@@ -2,15 +2,25 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Domain.User;
+import saveData.FileData;
 
 public class NewUser extends JFrame {
-
+	//Agregue esto: nicole
+	User user;
+    FileData fileData;
+    DefaultTableModel modelTable;
+    Vector space;
+   
 	private JLabel  lNewEntry, lUserName, lName, lPaymentMethod, lEmail, lPhoneNumber, lAdress, lPassword, lConfirmPassword;
 	private JTextField tUserName, tName,tPaymentMethod, tEmail, tPhoneNumber, tAdress, tPassword, tConfirmPassword;
 	private JButton bVerify, bBack;
@@ -21,6 +31,9 @@ public class NewUser extends JFrame {
 	private PanelNewUser panel = new PanelNewUser();
 	
 	public NewUser() {
+		user= new User("","","","","","","");
+		fileData= new FileData();
+		space= new Vector();
 		
 		panel.add(getLNewEntry());
 		panel.add(getLUserName());
@@ -52,6 +65,18 @@ public class NewUser extends JFrame {
 		//setVisible(true);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		
+        //AQUI HICE CAMBIO, NICOLE
+        space.addElement("NAME");
+        space.addElement("USERNAME");
+        space.addElement("ADRESS");
+        space.addElement("EMAIL");
+        space.addElement("PASSWORD");
+        space.addElement("PHONENUMBER");
+        space.addElement("PAYMENTMETHOD");
+
+        modelTable = new DefaultTableModel(space,0);
+        
 	}
 	
 	public JLabel getLNewEntry() {
@@ -241,6 +266,26 @@ public class NewUser extends JFrame {
 	}
 	
 	public JButton getBVerify() {
+		///agrego nicole: se adjunta fuente: https://www.youtube.com/watch?v=AH4lRZ5EvNI
+        String name = tName.getText();
+        String userName = tUserName.getText();
+        String adress = tAdress.getText();
+        String email = tEmail.getText();
+        String password = tPassword.getText();
+        String phoneNumber = tPhoneNumber.getText();
+        String paymentMethod = tPaymentMethod.getText();
+        
+        user.setName(name);
+        user.setUserName(userName);
+        user.setAdress(adress);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPhoneNumber(phoneNumber);
+        user.setPaymentMethod(paymentMethod);
+        
+        fileData.saveContact(user);
+        fileData.saveFile(user);
+        //termina lo que agrego nicole
 		if(bVerify == null) {
 			bVerify = new JButton();
 			bVerify.setForeground(Color.white);

@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 yos,freibfip,nfwn,jncejiwb,bnediqwbef,yoselinPorras,nwjbf
 yorge,bnwibfieb,nkjcdjbwi,bwijfbiwb,wiujfbwieb,yoselinPorras,bfiebhfiu
+=======
+sofia,ddsfvds,arffga,asasfv@dvd,frsergfse,12345678,123456
+>>>>>>> ProyectoAlgoritmos_Nicole_1

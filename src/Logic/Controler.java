@@ -11,10 +11,14 @@ import javax.swing.JOptionPane;
 
 import Domain.CarImage;
 import Domain.User;
+import GUI.Administrator;
 import GUI.Car;
+import GUI.ControllerAristas;
 import GUI.NewUser;
 import GUI.Principal;
 import GUI.Start;
+import Graphs.GrafoException;
+import Graphs.GrafoListaAdyacencia;
 
 public class Controler implements ActionListener, KeyListener{
 
@@ -25,11 +29,15 @@ public class Controler implements ActionListener, KeyListener{
 	private CarType type;
 	private Car car;
 	private CarImage image;
+	private Administrator admin;
 	
 	private String password = "";
 	private String name = "";
 	private boolean condition = false, condition2 = false;
 	private String []data;
+	
+	private GrafoListaAdyacencia graph;
+	private CreateGraphs createGraphs;
 	
 	private ImageIcon carX = new ImageIcon("/Images/CarX.png");
 
@@ -40,6 +48,7 @@ public class Controler implements ActionListener, KeyListener{
 		file = new Files();
 		type = new CarType();
 		car = new Car();
+		admin = new Administrator();
 		
 		data = new String[5];
 		init();
@@ -103,6 +112,46 @@ public class Controler implements ActionListener, KeyListener{
 		principal.getLTrips().setText("Trips: ");
 	}
 	
+	private void createGraph() {
+		graph = new GrafoListaAdyacencia(Integer.parseInt(admin.getTNumberPlaces().getText()));
+	}
+	
+	private void addVertex(String nodes) throws GrafoException{
+		String[] vertices = nodes.split(",");
+		for (int i = 0; i < vertices.length; i++) {
+			graph.addVertex(vertices[i]);
+		}
+	}
+	
+	private void addArista(String lugar, String destino, int peso) throws GrafoException {
+		graph.addEdgeWeight(lugar, destino, peso);
+		System.out.println(graph.existEdge(lugar, destino));
+	}
+	
+	private void addNode() {
+		try {
+			addVertex(admin.getAPlaces().getText());
+			String[] values=admin.getAPlaces().getText().split(",");
+			addArista(values);
+			admin.dispose();
+		} catch (GrafoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+	}
+	
+	private void addArista( String[]values) {//Panel modificador de aristas
+		try {
+			addArista((String)a.lugar().getSelectedItem(), (String)a.destino().getSelectedItem(), Integer.parseInt(a.getDistancia().getText()));
+			JOptionPane.showMessageDialog(null, "Se añadio la arista de: "+(String)a.lugar().getSelectedItem()+" a "+(String)a.destino().getSelectedItem()+" con "+a.getDistancia().getText()+" Km.");
+			a.getDistancia().setText("");
+		} catch (NumberFormatException | GrafoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	private void goBack() {
 		newUser.setVisible(false);
 		principal.setVisible(false);
@@ -135,6 +184,38 @@ public class Controler implements ActionListener, KeyListener{
 	private void visible4() {
 		principal.setVisible(true);
 		car.setVisible(false);
+	}
+	
+	private void visible5() {
+		admin.getAPlaces().setVisible(true);
+		admin.getLInstruction2().setVisible(true);
+		admin.getBSave2().setVisible(true);
+		admin.getBReturn().setVisible(true);
+		
+		admin.getLInstruction().setVisible(false);
+		admin.getBSave().setVisible(false);
+		admin.getTNumberPlaces().setVisible(false);
+	}
+	
+	private void visible6() {
+		admin.getAPlaces().setVisible(false);
+		admin.getLInstruction2().setVisible(false);
+		admin.getBSave2().setVisible(false);
+		admin.getBReturn().setVisible(false);
+		
+		admin.getLInstruction().setVisible(true);
+		admin.getBSave().setVisible(true);
+		admin.getTNumberPlaces().setVisible(true);
+	}
+	
+	private void visible7() {
+		principal.setVisible(true);
+		admin.setVisible(false);
+	}
+	
+	private void visible8() {
+		admin.setVisible(true);
+		principal.setVisible(false);
 	}
 	
 	private void termsAndConditions() {
@@ -181,7 +262,7 @@ public class Controler implements ActionListener, KeyListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				visible8();
 			}
 		});
 		
@@ -208,6 +289,41 @@ public class Controler implements ActionListener, KeyListener{
 				goBack();
 			}
 		});
+		
+		admin.getBSave().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				createGraph();
+				admin.dispose();
+				visible5();
+			}
+		});
+		
+		admin.getBReturn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible6();
+			}
+		});
+		
+		admin.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible7();
+			}
+		});
+		
+		admin.getBSave2().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addNode();
+			}
+		});
+		
 		
 		car.getBChoose().addActionListener(new ActionListener() {
 

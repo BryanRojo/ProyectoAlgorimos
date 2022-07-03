@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -16,14 +18,14 @@ import Domain.User;
 import Domain.Vertex;
 import GUI.Administrator;
 import GUI.Car;
-//import GUI.ControllerAristas;
+import GUI.Map;
 import GUI.NewUser;
 import GUI.Principal;
 import GUI.Start;
 import Graphs.GrafoException;
 import Graphs.GrafoListaAdyacencia;
 
-public class Controler implements ActionListener, KeyListener{
+public class Controler implements ActionListener, KeyListener, MouseListener{
 
 	private Start start;
 	private NewUser newUser;
@@ -36,13 +38,15 @@ public class Controler implements ActionListener, KeyListener{
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
+	private int vertexLength, cont;
 	private String password = "";
 	private String name = "";
 	private boolean condition = false, condition2 = false;
-	private String []data;
+	private String []data, values;
 	
 	private GrafoListaAdyacencia graph;
-	private CreateGraphs createGraphs;
+	
+	private Map map ;
 	
 	private ImageIcon carX = new ImageIcon("/Images/CarX.png");
 
@@ -59,6 +63,8 @@ public class Controler implements ActionListener, KeyListener{
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
+		
+		this.map = new Map();
 		init();
 	}
 	
@@ -129,6 +135,7 @@ public class Controler implements ActionListener, KeyListener{
 		for (int i = 0; i < vertices.length; i++) {
 			graph.addVertex(vertices[i]);
 		}
+		this.vertexLength = vertices.length;
 	}
 	
 	private void addArista(String lugar, String destino, int peso) throws GrafoException {
@@ -139,11 +146,11 @@ public class Controler implements ActionListener, KeyListener{
 	private void addNode() {
 		try {
 			addVertex(admin.getAPlaces().getText());
-			String[] values=admin.getAPlaces().getText().split(",");
-			addArista(values);
-			admin.dispose();
+			this.values=admin.getAPlaces().getText().split(",");
+			addArista(this.values);
+			//admin.dispose();
 		} catch (GrafoException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 	
@@ -158,6 +165,23 @@ public class Controler implements ActionListener, KeyListener{
 			// TODO Auto-generated catch block
 			//e1.printStackTrace();
 		//}
+	}
+	
+	public void createVertex(int x, int y) {
+		String places = "";
+		for( int i = this.cont; i<this.vertexLength;i++) {
+			places = this.values[i];
+			this.cont +=1;
+			break;
+		}
+		
+		this.vertex.add(new Vertex(x, y, places));
+	}
+	
+	public void draw(Graphics g) {
+		for( int i = 0; i< this.vertexLength;i++ ) {
+			this.vertex.get(i).drawVertex(g);
+		}
 	}
 	
 	private void goBack() {
@@ -195,7 +219,7 @@ public class Controler implements ActionListener, KeyListener{
 	}
 	
 	private void visible5() {
-		admin.getAPlaces().setVisible(true);
+		admin.getScrollPane().setVisible(true);
 		admin.getLInstruction2().setVisible(true);
 		admin.getBSave2().setVisible(true);
 		admin.getBReturn().setVisible(true);
@@ -206,7 +230,7 @@ public class Controler implements ActionListener, KeyListener{
 	}
 	
 	private void visible6() {
-		admin.getAPlaces().setVisible(false);
+		admin.getScrollPane().setVisible(false);
 		admin.getLInstruction2().setVisible(false);
 		admin.getBSave2().setVisible(false);
 		admin.getBReturn().setVisible(false);
@@ -224,6 +248,10 @@ public class Controler implements ActionListener, KeyListener{
 	private void visible8() {
 		admin.setVisible(true);
 		principal.setVisible(false);
+	}
+	
+	private void visible9() {
+		map.setVisible(true);
 	}
 	
 	private void termsAndConditions() {
@@ -303,7 +331,7 @@ public class Controler implements ActionListener, KeyListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				createGraph();
-				admin.dispose();
+				//admin.dispose();
 				visible5();
 			}
 		});
@@ -329,6 +357,7 @@ public class Controler implements ActionListener, KeyListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addNode();
+				visible9();
 			}
 		});
 		
@@ -387,5 +416,22 @@ public class Controler implements ActionListener, KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		createVertex(e.getX(), e.getY());
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
 
 }

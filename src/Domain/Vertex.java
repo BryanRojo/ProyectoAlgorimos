@@ -11,10 +11,10 @@ public class Vertex {
 	
 	private int x;
 	private int y;
-	private int place;
+	private String place;
 	private BufferedImage image;
 	
-	public Vertex(int x, int y, int place) {
+	public Vertex(int x, int y, String place) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -37,11 +37,11 @@ public class Vertex {
 		this.y = y;
 	}
 
-	public int getPlace() {
+	public String getPlace() {
 		return place;
 	}
 
-	public void setPlace(int place) {
+	public void setPlace(String place) {
 		this.place = place;
 	}
 	

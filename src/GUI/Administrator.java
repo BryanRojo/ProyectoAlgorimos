@@ -37,7 +37,7 @@ public class Administrator extends JFrame{
 		setTitle("Administrator");
 		setBounds(100,100,300,250);
 		getContentPane().setBackground(Color.black);
-		setVisible(true);
+		//setVisible(true);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		

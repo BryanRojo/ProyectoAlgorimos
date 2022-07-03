@@ -5,15 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import Domain.Arista;
 import Domain.CarImage;
 import Domain.User;
+import Domain.Vertex;
 import GUI.Administrator;
 import GUI.Car;
-import GUI.ControllerAristas;
+//import GUI.ControllerAristas;
 import GUI.NewUser;
 import GUI.Principal;
 import GUI.Start;
@@ -30,6 +33,8 @@ public class Controler implements ActionListener, KeyListener{
 	private Car car;
 	private CarImage image;
 	private Administrator admin;
+	private ArrayList<Vertex> vertex;
+	private ArrayList<Arista> arista;
 	
 	private String password = "";
 	private String name = "";
@@ -42,15 +47,18 @@ public class Controler implements ActionListener, KeyListener{
 	private ImageIcon carX = new ImageIcon("/Images/CarX.png");
 
 	public Controler() {
-		start = new Start();
-		newUser = new NewUser();
-		principal = new Principal();
-		file = new Files();
-		type = new CarType();
-		car = new Car();
-		admin = new Administrator();
+		this.start = new Start();
+		this.newUser = new NewUser();
+		this.principal = new Principal();
+		this.file = new Files();
+		this.type = new CarType();
+		this.car = new Car();
+		this.admin = new Administrator();
 		
-		data = new String[5];
+		this.data = new String[5];
+		
+		this.vertex = new ArrayList<>();
+		this.arista = new ArrayList<>();
 		init();
 	}
 	
@@ -142,14 +150,14 @@ public class Controler implements ActionListener, KeyListener{
 	}
 	
 	private void addArista( String[]values) {//Panel modificador de aristas
-		try {
-			addArista((String)a.lugar().getSelectedItem(), (String)a.destino().getSelectedItem(), Integer.parseInt(a.getDistancia().getText()));
-			JOptionPane.showMessageDialog(null, "Se añadio la arista de: "+(String)a.lugar().getSelectedItem()+" a "+(String)a.destino().getSelectedItem()+" con "+a.getDistancia().getText()+" Km.");
-			a.getDistancia().setText("");
-		} catch (NumberFormatException | GrafoException e1) {
+		//try {
+			//addArista((String)a.lugar().getSelectedItem(), (String)a.destino().getSelectedItem(), Integer.parseInt(a.getDistancia().getText()));
+			//JOptionPane.showMessageDialog(null, "Se añadio la arista de: "+(String)a.lugar().getSelectedItem()+" a "+(String)a.destino().getSelectedItem()+" con "+a.getDistancia().getText()+" Km.");
+			//a.getDistancia().setText("");
+		//} catch (NumberFormatException | GrafoException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			//e1.printStackTrace();
+		//}
 	}
 	
 	private void goBack() {

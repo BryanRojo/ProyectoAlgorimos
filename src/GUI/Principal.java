@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -13,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class Principal extends JFrame{
 	
 	private JLabel lUserName, lName, lStars, lPaymentMethod, lEmail, lCelephoneNumber, lTrips, lStart, lDestiny;
-	private JTextField tStart, tDestiny;
+	private JComboBox tStart, tDestiny;
 	private JButton bAdmin, bTerms, bStart, bBack;
 	
 	private PanelPrincipal panel = new PanelPrincipal();
@@ -142,20 +143,20 @@ public class Principal extends JFrame{
 		return lDestiny;
 	}
 	
-	public JTextField getTStart() {
+	public JComboBox getTStart() {
 		if(tStart == null) {
-			tStart = new JTextField();
-			tStart.setBounds(475,250,150,20);
+			tStart = new JComboBox();
+			tStart.setBounds(475,250,150,30);
 			tStart.setForeground(Color.black);
 			tStart.setFont(font);
 		}
 		return tStart;
 	}
 	
-	public JTextField getTDestiny() {
+	public JComboBox getTDestiny() {
 		if(tDestiny == null) {
-			tDestiny = new JTextField();
-			tDestiny.setBounds(475,330,150,20);
+			tDestiny = new JComboBox();
+			tDestiny.setBounds(475,330,150,30);
 			tDestiny.setForeground(Color.black);
 			tDestiny.setFont(font);
 		}

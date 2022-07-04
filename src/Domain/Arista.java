@@ -10,10 +10,12 @@ public class Arista {
 	private int x2;
 	private int y2;
 	
-	public Arista(int x, int y) {
+	public Arista(int x, int y, int x2, int y2) {
 		super();
 		this.x = x;
 		this.y = y;
+		this.x2 = x2;
+		this.y2 = y2;
 	
 	}
 
@@ -50,9 +52,9 @@ public class Arista {
 	}
 
 	public void drawVertex(Graphics g){
-		
-		 g.drawLine(x, y, x2, y2);
 		 g.setColor(Color.white);
+		 g.drawLine(x, y, x2, y2);
+		
 	 }
 	
 }

@@ -14,8 +14,6 @@ public class Vertex {
 	private String place;
 	private BufferedImage image;
 	
-	
-	
 	public Vertex() {
 		super();
 	}
@@ -52,16 +50,10 @@ public class Vertex {
 	}
 	
 	public void drawVertex(Graphics g){
-		 
-		/* try {
-				this.image=ImageIO.read(getClass().getResourceAsStream("/Images/pp.png"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}*/
-		 g.drawOval(x, y, 15, 15);
-		 g.setColor(Color.white);
-		// g.drawImage(this.image, (int)this.x, (int)this.y,40,40, null);
-		 g.drawString(""+this.place, 5, 15);
+
+		g.setColor(Color.white);
+		g.drawOval(x, y, 50, 50);
+		g.drawString(""+this.place,x+17, y+30);
 	 }
 	
 }

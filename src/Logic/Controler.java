@@ -162,17 +162,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		//}
 	}
 	
-	public void createVertex(int x, int y) {
-		String places = "";
-		for( int i = this.cont; i<this.vertexLength;i++) {
-			places = this.values[i];
-			this.cont +=1;
-			break;
-		}
-		
-		this.vertex.add(new Vertex(x, y, places));
-	}
-	
 	public void draw(Graphics g) {
 		for( int i = 0; i< this.vertexLength;i++ ) {
 			this.vertex.get(i).drawVertex(g);
@@ -247,7 +236,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	
 	private void visible9() {
 		admin.setVisible(false);
-		map = new Map(this.vertexLength);
+		map = new Map(this.vertexLength, this.values);
 		//map.setVisible(true);
 	}
 	
@@ -406,13 +395,11 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				//panel = new PanelAdministrator(this.vertexLength);
-				createVertex(e.getX(), e.getY());
-				System.out.println("g");
+				
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 

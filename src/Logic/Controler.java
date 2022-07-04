@@ -237,7 +237,10 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private void visible9() {
 		admin.setVisible(false);
 		map = new Map(this.vertexLength, this.values);
-		//map.setVisible(true);
+	}
+	
+	private void visible10(){
+		map.setVisible(false);
 	}
 	
 	private void termsAndConditions() {
@@ -346,6 +349,14 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			}
 		});
 		
+		map.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible10();
+				visible5();
+			}
+		});
 		
 		car.getBChoose().addActionListener(new ActionListener() {
 
@@ -389,40 +400,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				visible4();
 			}
 		});
-		
-		map.g().addMouseListener(new MouseListener() {
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				//panel = new PanelAdministrator(this.vertexLength);
-				
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-	});
-		
 		
 	}
 

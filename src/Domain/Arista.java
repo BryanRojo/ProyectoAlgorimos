@@ -9,6 +9,7 @@ public class Arista {
 	private int y;
 	private int x2;
 	private int y2;
+	private int weight;
 	
 	public Arista(int x, int y, int x2, int y2) {
 		super();
@@ -51,9 +52,18 @@ public class Arista {
 		this.y2 = y2;
 	}
 
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
 	public void drawVertex(Graphics g){
 		 g.setColor(Color.white);
 		 g.drawLine(x, y, x2, y2);
+		 g.drawString(""+this.weight, x, y);
 		
 	 }
 	

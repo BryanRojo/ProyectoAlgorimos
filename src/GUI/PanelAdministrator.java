@@ -1,12 +1,16 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Domain.Arista;
@@ -19,22 +23,18 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 	private int FPS=60;
 	private long time=1000/FPS;
 	private long espera;
-	//private Vertex vertex;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
-	private int vertexLen, cont, ca;
+	private int vertexLen, cont, ca, cont3;
 	private String []value;
 	private Graphics gg;
-	private int x =0;
-	private int y =0;
-	private int x2 = 0;
-	private int y2 =0;
-	
+	private int x =0, y =0, x2 = 0, y2 =0;
+
 	
 	public PanelAdministrator(int vertexLength, String []values) {
 		
 		this.addMouseListener(this);
-		this.setSize(750,480);
+		this.setSize(300,400);
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
 		this.vertexLen = vertexLength;
@@ -88,24 +88,26 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 	public void mousePressed(MouseEvent e) {
 	
 		if(this.cont<this.vertexLen) {
-		createVertex(e.getX(), e.getY());	
-		System.out.println("g"+this.cont);
+			createVertex(e.getX(), e.getY());	
+			System.out.println("g"+this.cont);
 		}else {
+			if(this.cont3 < this.vertexLen+this.vertexLen+2) {
 			System.out.println("Haga click");
+			this.cont3 +=1;
 			if(ca == 0) {
 				this.x = e.getX();
 				this.y = e.getY();
-			this.ca =1;
-			System.out.println("2xy"+x+y);
-
-			System.out.println("Otra vez");
+				this.ca =1;
+				System.out.println("Otra vez");
 			}else {	
 				this.x2 = e.getX();
 				this.y2 = e.getY();
-				System.out.println("2xy"+x2+y2);
 				createArista(x2,y2,x,y);
 				this.ca = 0;
 			}	
+			}else {
+				JOptionPane.showInputDialog(null, "All roads were laid");
+			}
 		}
 	}
 
@@ -146,6 +148,6 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 			this.thread=new Thread(this);
 			this.thread.start();
 		}
-	} 
+	}
 	
 }

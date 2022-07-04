@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,13 +11,13 @@ import javax.swing.border.EmptyBorder;
 public class Map extends JFrame {
 	
 	private PanelAdministrator panel;
-	private JButton p;
+	private JButton bBack;;
 	
 	public Map(int vertexLen, String []values) {
 		
 		System.out.println(vertexLen);
 		panel = new PanelAdministrator(vertexLen, values);
-		panel.add(g());
+		panel.add(getBBack());
 		panel.setLayout(new BorderLayout(0,0));
 		panel.setBorder(new EmptyBorder(5,5,5,5));
 		setTitle("New User");
@@ -26,12 +28,17 @@ public class Map extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
-	public JButton g() {
-		if(p == null) {
-			p = new JButton() ;
-			p.setBounds(100,100,20,10);
-			p.setText("P");
+	public JButton getBBack() {
+		if(bBack == null) {
+			bBack = new JButton();
+			bBack.setForeground(Color.white);
+			bBack.setBackground(Color.black);
+			bBack.setText("Exit");
+			bBack.setBorder(null);
+			bBack.setBounds(195,190,80,20);
+			
+			bBack.setFont(new Font("Calibri", Font.BOLD, 15));
 		}
-		return p;
+		return bBack;
 	}
 }

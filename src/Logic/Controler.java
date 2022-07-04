@@ -62,6 +62,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.arista = new ArrayList<>();
 		
 		init();
+		
 	}
 	
 	@Override
@@ -108,6 +109,18 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			}else {
 				JOptionPane.showMessageDialog(null, "User or passwrod is wrong, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
 			}
+		}
+	}
+	
+	private void fillComboBox() {
+		String line="";
+		line=this.admin.getAPlaces().getText();
+		String split[]=line.split(",");
+		for(int i =0; i<split.length; i++) {
+			if(split[i] != null) {
+				principal.getTStart().addItem(split[i]);
+				principal.getTDestiny().addItem(split[i]);
+	        } 
 		}
 	}
 	
@@ -346,6 +359,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			public void actionPerformed(ActionEvent e) {
 				addNode();
 				visible9();
+				fillComboBox();
+				principal.setVisible(true);
 			}
 		});
 		

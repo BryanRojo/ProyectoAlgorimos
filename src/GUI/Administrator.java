@@ -63,6 +63,7 @@ public class Administrator extends JFrame{
 		}
 		return tNumberPlaces;
 	}
+	
 	public JButton getBSave() {
 		if (bSave == null) {
 			bSave = new JButton("Save");

@@ -4,9 +4,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import Domain.Arista;
+import Domain.Vertex;
 
 
 public class PanelAdministrator extends JPanel implements MouseListener, Runnable{
@@ -15,11 +19,18 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 	private int FPS=60;
 	private long time=1000/FPS;
 	private long espera;
+	private Vertex vertex;
+	private ArrayList<Arista> arista;
+	private int vertexLen;
 	
-	public PanelAdministrator() {
+	public PanelAdministrator(int vertexLength) {
 		
 		this.addMouseListener(this);
 		this.setSize(750,480);
+		this.vertex = new Vertex();
+		this.arista = new ArrayList<>();
+		this.vertexLen = vertexLength;
+
 	}
 	
 	@Override
@@ -29,8 +40,15 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
         g.drawImage(icon.getImage(), 0, 0, dimension.width, dimension.height, null);
         setOpaque(false);
         super.paintChildren(g);
+        this.vertex.drawVertex(g);
 	}
-
+	
+	/*private void c(Graphics g) {
+		for (int i = 0 ; i <this.vertexLen; i++) {
+			this.vertex.get(i).drawVertex(g);
+		}
+	}*/
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 

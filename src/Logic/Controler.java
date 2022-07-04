@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import Domain.Arista;
@@ -20,6 +19,7 @@ import GUI.Administrator;
 import GUI.Car;
 import GUI.Map;
 import GUI.NewUser;
+import GUI.PanelAdministrator;
 import GUI.Principal;
 import GUI.Start;
 import Graphs.GrafoException;
@@ -34,21 +34,19 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private CarType type;
 	private Car car;
 	private CarImage image;
+	//private PanelAdministrator panel;
 	private Administrator admin;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
-	private int vertexLength, cont;
-	private String password = "";
-	private String name = "";
+	public int vertexLength, cont;
+	private String password = "", name = "";
 	private boolean condition = false, condition2 = false;
 	private String []data, values;
 	
 	private GrafoListaAdyacencia graph;
 	
 	private Map map ;
-	
-	private ImageIcon carX = new ImageIcon("/Images/CarX.png");
 
 	public Controler() {
 		this.start = new Start();
@@ -58,13 +56,11 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.type = new CarType();
 		this.car = new Car();
 		this.admin = new Administrator();
-		
 		this.data = new String[5];
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
 		
-		this.map = new Map();
 		init();
 	}
 	
@@ -148,7 +144,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			addVertex(admin.getAPlaces().getText());
 			this.values=admin.getAPlaces().getText().split(",");
 			addArista(this.values);
-			//admin.dispose();
 		} catch (GrafoException e1) {
 			
 			e1.printStackTrace();
@@ -251,7 +246,9 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible9() {
-		map.setVisible(true);
+		admin.setVisible(false);
+		map = new Map(this.vertexLength);
+		//map.setVisible(true);
 	}
 	
 	private void termsAndConditions() {
@@ -331,7 +328,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				createGraph();
-				//admin.dispose();
 				visible5();
 			}
 		});
@@ -381,7 +377,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				
 					car.getLTest().setText(type.print());
 					if(car.getLTest().getText().equals("Car X")) {
-						car.getLTest().setIcon(carX);
+					//	car.getLTest().setIcon(carX);
 						car.getLTest().setIconTextGap(1);
 						car.getLTest().setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 						car.getLTest().setVerticalAlignment(javax.swing.SwingConstants.CENTER);
@@ -405,6 +401,41 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			}
 		});
 		
+		map.g().addMouseListener(new MouseListener() {
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				//panel = new PanelAdministrator(this.vertexLength);
+				createVertex(e.getX(), e.getY());
+				System.out.println("g");
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+	});
+		
 		
 	}
 
@@ -419,12 +450,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		createVertex(e.getX(), e.getY());
-	}
-
+	
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {}
 
@@ -433,5 +460,11 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

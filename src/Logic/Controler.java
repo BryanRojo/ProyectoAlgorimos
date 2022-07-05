@@ -17,6 +17,7 @@ import Domain.User;
 import Domain.Vertex;
 import GUI.Administrator;
 import GUI.Car;
+import GUI.Drivers;
 import GUI.Map;
 import GUI.NewUser;
 import GUI.PanelAdministrator;
@@ -37,6 +38,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private CarImage image;
 	private Administrator admin;
 	private Road road;
+	private Drivers drivers;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
@@ -57,6 +59,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.type = new CarType();
 		this.car = new Car();
 		this.admin = new Administrator();
+		this.drivers=new Drivers();
 		
 		this.data = new String[5];
 		this.aristas = "";
@@ -98,6 +101,21 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		}
 	}
 	
+	public void fillData() {
+		this.drivers.getIName().setText("Marvin");
+		this.drivers.getIBrand().setText("Toyota");
+		this.drivers.getIQualification().setText("4,0");
+		this.drivers.getIPayment().setText("Efectivo");
+		this.drivers.getIName2().setText("Maria");
+		this.drivers.getIBrand2().setText("Nissan");
+		this.drivers.getIQualification2().setText("4,5");
+		this.drivers.getIPayment2().setText("Tarjeta");
+		this.drivers.getIName3().setText("Rodrigo");
+		this.drivers.getIBrand3().setText("BMW");
+		this.drivers.getIQualification3().setText("4,9");
+		this.drivers.getIPayment3().setText("Efectivo");
+	}
+	
 	private void verifyUser() {
 		if(start.getTUsername().getText().equals(null)&& start.getTPassword().getText().equals(null)){
 			JOptionPane.showMessageDialog(null, "User or password are empty, try again.", "Warning", JOptionPane.WARNING_MESSAGE);	
@@ -122,6 +140,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			if(split[i] != null) {
 				principal.getTStart().addItem(split[i]);
 				principal.getTDestiny().addItem(split[i]);
+				road.getCPlace().addItem(split[i]);
+				road.getCDestiny().addItem(split[i]);
 	        } 
 		}
 	}
@@ -220,7 +240,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible4() {
-		principal.setVisible(true);
+		drivers.setVisible(true);
 		car.setVisible(false);
 	}
 	
@@ -425,6 +445,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				visible4();
+				fillData();
 			}
 		});
 		

@@ -17,7 +17,7 @@ public class Map extends JFrame {
 		
 		System.out.println(vertexLen);
 		panel = new PanelAdministrator(vertexLen, values);
-		panel.add(getBBack());
+		//panel.add(getBBack());
 		panel.setLayout(new BorderLayout(0,0));
 		panel.setBorder(new EmptyBorder(5,5,5,5));
 		setTitle("New User");

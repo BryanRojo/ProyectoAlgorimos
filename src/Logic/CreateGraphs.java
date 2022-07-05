@@ -6,6 +6,7 @@ import Graphs.GrafoListaAdyacencia;
 public class CreateGraphs {
 
 	GrafoListaAdyacencia graph;
+	
 	public CreateGraphs() {
 		
 	}//Constructor

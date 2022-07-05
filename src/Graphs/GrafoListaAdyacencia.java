@@ -21,7 +21,7 @@ public class GrafoListaAdyacencia implements Grafo{
 		vertex = new Vertex[n];
 		pila = new ArrayStackPila();
 		//cola = new ColaEnlazada();
-		System.out.println("Created");
+		System.out.println("Created"+ vertex.length);
 	}
 	@Override
 	public void delete() {
@@ -44,13 +44,17 @@ public class GrafoListaAdyacencia implements Grafo{
 		if(count>=vertex.length) {
 			throw new GrafoException("The graph is full");
 		}
+	
 		vertex[count++]= new Vertex(element);
+		System.out.println("Cantidad"+count);
 	}
+	
 	@Override
 	public void addEdge(Object v1, Object v2) throws GrafoException {
 		vertex[getPosition(v1)].listArista.insertar(v2);
 		vertex[getPosition(v2)].listArista.insertar(v1);
 	}
+	
 	@Override
 	public boolean existVertex(Object v) throws GrafoException {
 		if(isEmpty()) {
@@ -83,6 +87,7 @@ public class GrafoListaAdyacencia implements Grafo{
 
 	@Override
 	public void addEdgeWeight(Object v1, Object v2, Object peso) throws GrafoException {
+		System.out.println("Prueba: "+ v1+v2);
 		vertex[getPosition(v1)].listArista.insertar(v2);
 		vertex[getPosition(v2)].listArista.insertar(v1);
 		vertex[getPosition(v1)].listPesos.insertar(peso);
@@ -108,11 +113,16 @@ public class GrafoListaAdyacencia implements Grafo{
 		return -1;
 	}
 
-	private int getPosition(Object element) {
-
+	public int getPosition(Object element) {
+		System.out.println("count"+count);
+		System.out.println("Element"+element.toString());
 		for (int i = 0; i < count; i++) {
+			
+			System.out.println("element1"+element +"vertex"+ vertex[i].element);
 			if(vertex[i].element.equals(element)) {
+				System.out.println("element"+element);
 				return i;
+				
 			}
 		}
 		return -1;

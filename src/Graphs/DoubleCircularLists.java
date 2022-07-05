@@ -57,7 +57,7 @@ public class DoubleCircularLists implements ListDouble{
 	        count++;
 
 	//Comentado para que no enrede el print del GrafoListaAdyacencia
-	      //  System.out.println("Se agrego el elemento= " + element);
+	       System.out.println("Se agrego el elemento= " + element);
 	    }
 
 	    public int getSize1() {

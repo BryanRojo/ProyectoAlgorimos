@@ -21,6 +21,7 @@ import GUI.Map;
 import GUI.NewUser;
 import GUI.PanelAdministrator;
 import GUI.Principal;
+import GUI.Road;
 import GUI.Start;
 import Graphs.GrafoException;
 import Graphs.GrafoListaAdyacencia;
@@ -34,13 +35,13 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private CarType type;
 	private Car car;
 	private CarImage image;
-	//private PanelAdministrator panel;
 	private Administrator admin;
+	private Road road;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
-	public int vertexLength, cont;
-	private String password = "", name = "";
+	public int vertexLength, cont, cont2;
+	private String password = "", name = "", aristas;
 	private boolean condition = false, condition2 = false;
 	private String []data, values;
 	
@@ -56,11 +57,13 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.type = new CarType();
 		this.car = new Car();
 		this.admin = new Administrator();
+		
 		this.data = new String[5];
+		this.aristas = "";
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
-		
+		this.road = new Road(this.values);
 		init();
 		
 	}
@@ -156,7 +159,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		try {
 			addVertex(admin.getAPlaces().getText());
 			this.values=admin.getAPlaces().getText().split(",");
-			addArista(this.values);
+			//addArista(this.values);
 		} catch (GrafoException e1) {
 			
 			e1.printStackTrace();
@@ -164,15 +167,22 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	
 	}
 	
+	private void addNode2() {
+		addArista(this.values);
+	}
+	
 	private void addArista( String[]values) {//Panel modificador de aristas
-		//try {
-			//addArista((String)a.lugar().getSelectedItem(), (String)a.destino().getSelectedItem(), Integer.parseInt(a.getDistancia().getText()));
-			//JOptionPane.showMessageDialog(null, "Se añadio la arista de: "+(String)a.lugar().getSelectedItem()+" a "+(String)a.destino().getSelectedItem()+" con "+a.getDistancia().getText()+" Km.");
-			//a.getDistancia().setText("");
-		//} catch (NumberFormatException | GrafoException e1) {
-			// TODO Auto-generated catch block
-			//e1.printStackTrace();
-		//}
+		
+			try {
+				addArista((String)road.Place().getSelectedItem(), (String)road.destiny().getSelectedItem(), Integer.parseInt(road.getTDistance().getText()));
+				this.aristas+= ((String)road.Place().getSelectedItem()+","+ (String)road.destiny().getSelectedItem()+","+Integer.parseInt(road.getTDistance().getText())+ "-");
+				
+				JOptionPane.showMessageDialog(null, "Path was added: "+((String)road.Place().getSelectedItem()+ (String)road.destiny().getSelectedItem()+ Integer.parseInt(road.getTDistance().getText())+" whit"+road.getTDistance().getText()+" Km."));
+				road.getTDistance().setText("");
+				
+			} catch (NumberFormatException | GrafoException e1) {
+				e1.printStackTrace();
+		}
 	}
 	
 	public void draw(Graphics g) {
@@ -240,11 +250,13 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private void visible7() {
 		principal.setVisible(true);
 		admin.setVisible(false);
+	//	road.setVisible(false);
 	}
 	
 	private void visible8() {
 		admin.setVisible(true);
 		principal.setVisible(false);
+		//road.setVisible(false);
 	}
 	
 	private void visible9() {
@@ -254,6 +266,13 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	
 	private void visible10(){
 		map.setVisible(false);
+	}
+	
+	private void visible11() {
+		this.road = new Road(this.values);
+		road.setVisible(true);
+		admin.setVisible(false);
+		
 	}
 	
 	private void termsAndConditions() {
@@ -341,7 +360,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				visible6();
+				visible8();
+				visible5();
 			}
 		});
 		
@@ -358,9 +378,36 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addNode();
-				visible9();
+				visible11();
+				//visible9();
 				fillComboBox();
-				principal.setVisible(true);
+			}
+		});
+		
+		road.getBLogin().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addNode2();
+			}
+		});
+		
+		road.getBReturn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Return");
+				visible8();
+				visible6();
+				
+			}
+		});
+		
+		road.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible7();
 			}
 		});
 		

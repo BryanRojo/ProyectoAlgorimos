@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ import javax.swing.JPanel;
 
 import Domain.Arista;
 import Domain.Vertex;
+import Graphs.GrafoException;
+import Graphs.GrafoListaAdyacencia;
+import Logic.CreateGraphs;
 
 
 public class PanelAdministrator extends JPanel implements MouseListener, Runnable{
@@ -39,7 +44,6 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 		this.arista = new ArrayList<>();
 		this.vertexLen = vertexLength;
 		this.value = values;
-
 	}
 	
 	@Override
@@ -67,7 +71,7 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 		vertex.add(new Vertex(x, y, places));
 	}
 	
-	public void createArista(int x, int y, int x2, int y2) {
+	public void createArista() {
 		arista.add(new Arista(x, y, x2,y2));
 	}
 	
@@ -90,7 +94,8 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 		if(this.cont<this.vertexLen) {
 			createVertex(e.getX(), e.getY());	
 			System.out.println("g"+this.cont);
-		}else {
+		}else {			
+			
 			if(this.cont3 < this.vertexLen+this.vertexLen+2) {
 			System.out.println("Haga click");
 			this.cont3 +=1;
@@ -102,7 +107,7 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 			}else {	
 				this.x2 = e.getX();
 				this.y2 = e.getY();
-				createArista(x2,y2,x,y);
+				//createArista(x2,y2,x,y);
 				this.ca = 0;
 			}	
 			}else {

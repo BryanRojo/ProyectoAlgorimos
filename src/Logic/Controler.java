@@ -35,7 +35,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private Files file;
 	private CarType type;
 	private Car car;
-	private CarImage image;
+	//private CarImage image;
 	private Administrator admin;
 	private Road road;
 	private Drivers drivers;
@@ -60,13 +60,14 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.car = new Car();
 		this.admin = new Administrator();
 		this.drivers=new Drivers();
-		
+	
 		this.data = new String[5];
 		this.aristas = "";
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
 		init();
+		init2();
 		
 	}
 	
@@ -244,6 +245,12 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		car.setVisible(false);
 	}
 	
+	private void visible04() {
+		principal.setVisible(true);
+		car.setVisible(false);
+	
+	}
+	
 	private void visible5() {
 		admin.getScrollPane().setVisible(true);
 		admin.getLInstruction2().setVisible(true);
@@ -300,6 +307,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void init() {
+		
 		start.getBNewUser().addActionListener(new ActionListener() {
 
 			@Override
@@ -366,7 +374,45 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				goBack();
 			}
 		});
+		car.getBChoose().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible4();
+				fillData();
+			}
+		});
+
+		car.getBChoose().addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP)
+					car.getLTest().setText(type.next());
+				if(e.getKeyCode() == KeyEvent.VK_DOWN)
+					car.getLTest().setText(type.before());
+				
+					car.getLTest().setText(type.print());
+			}
+			
+			@Override
+			public void keyTyped(KeyEvent e) {}
+			@Override
+			public void keyReleased(KeyEvent e) {}
+		});
 		
+		car.getBBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible04();
+			}
+		});
+		
+	}
+	
+	private void init2() {
+
 		admin.getBSave().addActionListener(new ActionListener() {
 
 			@Override
@@ -440,51 +486,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			}
 		});
 		
-		car.getBChoose().addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				visible4();
-				fillData();
-			}
-		});
-		
-		car.getBChoose().addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_UP)
-					car.getLTest().setText(type.next());
-				if(e.getKeyCode() == KeyEvent.VK_DOWN)
-					car.getLTest().setText(type.before());
-				
-					car.getLTest().setText(type.print());
-					if(car.getLTest().getText().equals("Car X")) {
-					//	car.getLTest().setIcon(carX);
-						car.getLTest().setIconTextGap(1);
-						car.getLTest().setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-						car.getLTest().setVerticalAlignment(javax.swing.SwingConstants.CENTER);
-						car.getLTest().setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-						car.getLTest().setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-						
-					}
-			}
-			
-			@Override
-			public void keyTyped(KeyEvent e) {}
-			@Override
-			public void keyReleased(KeyEvent e) {}
-		});
-		
-		car.getBBack().addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				visible4();
-			}
-		});
-		
 	}
+		
 
 	@Override
 	public void keyTyped(KeyEvent e) {}

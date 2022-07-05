@@ -3,14 +3,15 @@ package Logic;
 import TDAListas.CircularDoubleLinkedList;
 
 import Domain.CarImage;
+import GUI.Car;
 public class CarType {
 
 	CircularDoubleLinkedList c;
-	CarImage car;
+	Car car;
 	
 	public CarType() {
 		c = new CircularDoubleLinkedList();
-		car = new CarImage();
+		car = new Car();
 		insertUber();
 	}
 	

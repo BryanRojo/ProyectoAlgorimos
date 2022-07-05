@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -31,7 +32,7 @@ public class Car extends JFrame {
 		panel.setBorder(new EmptyBorder(5,5,5,5));
 		setTitle("Car type");
 		setContentPane(panel);
-		setBounds(100, 100, 800, 480);
+		setBounds(100, 100, 500, 400);
 		setLocationRelativeTo(null);
 		//setVisible(true);
 		
@@ -39,8 +40,10 @@ public class Car extends JFrame {
 	public JLabel getLTest() {
 		if(lTest == null) {
 			lTest = new JLabel();
-			lTest.setBounds(200, 200, 257, 64);
-			lTest.setEnabled(false);
+			lTest.setForeground(Color.white);
+			lTest.setFont(new Font("Calibri", Font.BOLD, 20 ));
+			lTest.setBounds(200, 200, 257, 100);
+			//lTest.setEnabled(false);
 		}
 		return lTest;
 	}
@@ -48,7 +51,7 @@ public class Car extends JFrame {
 	public JButton getBChoose() {
 		if(bChoose==null) {
 			bChoose = new JButton("Choose");
-			bChoose.setBounds(336, 97, 85, 21);
+			bChoose.setBounds(200, 300, 85, 21);
 			bChoose.setBackground(Color.black);
 			bChoose.setForeground(Color.white);
 		}
@@ -61,7 +64,7 @@ public class Car extends JFrame {
 			bBack.setForeground(Color.white);
 			bBack.setBackground(Color.black);
 			bBack.setText("Go back");
-			bBack.setBounds(693,410,89,30);
+			bBack.setBounds(395,325,89,30);
 		}
 		return bBack;
 	}

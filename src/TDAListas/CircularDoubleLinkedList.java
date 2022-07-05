@@ -195,7 +195,6 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		Nodo aux = this.start.getNext();
 		int a = 1;
 		while(a==1) {
-			System.out.println("Entro al while");
 			if(position.equals(aux.getElement())) {
 				System.out.println("Encontro: "+aux.getNext().getElement());
 				this.position=String.valueOf(aux.getNext().getElement());
@@ -215,7 +214,6 @@ public class CircularDoubleLinkedList implements Lista, Serializable {
 		Nodo aux = this.start.getNext();
 		int a = 1;
 		while(a==1) {
-			System.out.println("Entro al while");
 			if(position.equals(aux.getElement())) {
 				this.position=String.valueOf(aux.getBefore().getElement());
 				a=2;

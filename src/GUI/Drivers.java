@@ -82,7 +82,7 @@ public class Drivers extends JFrame{
 			iName = new JLabel();
 			iName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iName.setForeground(Color.white);
-			iName.setBounds(140, 200, 257, 64);
+			iName.setBounds(190, 200, 257, 64);
 		}
 		return iName;
 	}
@@ -92,7 +92,7 @@ public class Drivers extends JFrame{
 			iBrand = new JLabel();
 			iBrand.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iBrand.setForeground(Color.white);
-			iBrand.setBounds(140, 220, 257, 64);
+			iBrand.setBounds(190, 220, 257, 64);
 		}
 		return iBrand;
 	}
@@ -102,7 +102,7 @@ public class Drivers extends JFrame{
 			iQualification = new JLabel();
 			iQualification.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iQualification.setForeground(Color.white);
-			iQualification.setBounds(180, 240, 257, 64);
+			iQualification.setBounds(190, 240, 257, 64);
 		}
 		return iQualification;
 	}
@@ -112,7 +112,7 @@ public class Drivers extends JFrame{
 			iPayment = new JLabel();
 			iPayment.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iPayment.setForeground(Color.white);
-			iPayment.setBounds(160, 260, 257, 64);
+			iPayment.setBounds(190, 260, 257, 64);
 		}
 		return iPayment;
 	}
@@ -122,7 +122,7 @@ public class Drivers extends JFrame{
 			iName2 = new JLabel();
 			iName2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iName2.setForeground(Color.white);
-			iName2.setBounds(355, 200, 257, 64);
+			iName2.setBounds(420, 200, 257, 64);
 		}
 		return iName2;
 	}
@@ -132,7 +132,7 @@ public class Drivers extends JFrame{
 			iBrand2 = new JLabel();
 			iBrand2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iBrand2.setForeground(Color.white);
-			iBrand2.setBounds(355, 220, 257, 64);
+			iBrand2.setBounds(420, 220, 257, 64);
 		}
 		return iBrand2;
 	}
@@ -142,7 +142,7 @@ public class Drivers extends JFrame{
 			iQualification2 = new JLabel();
 			iQualification2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iQualification2.setForeground(Color.white);
-			iQualification2.setBounds(355, 240, 257, 64);
+			iQualification2.setBounds(420, 240, 257, 64);
 		}
 		return iQualification2;
 	}
@@ -152,7 +152,7 @@ public class Drivers extends JFrame{
 			iPayment2 = new JLabel();
 			iPayment2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iPayment2.setForeground(Color.white);
-			iPayment2.setBounds(355, 260, 257, 64);
+			iPayment2.setBounds(420, 260, 257, 64);
 		}
 		return iPayment2;
 	}
@@ -162,7 +162,7 @@ public class Drivers extends JFrame{
 			iName3 = new JLabel();
 			iName3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iName3.setForeground(Color.white);
-			iName3.setBounds(575, 200, 257, 64);
+			iName3.setBounds(630, 200, 257, 64);
 		}
 		return iName3;
 	}
@@ -172,7 +172,7 @@ public class Drivers extends JFrame{
 			iBrand3 = new JLabel();
 			iBrand3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iBrand3.setForeground(Color.white);
-			iBrand3.setBounds(575, 220, 257, 64);
+			iBrand3.setBounds(630, 220, 257, 64);
 		}
 		return iBrand3;
 	}
@@ -182,7 +182,7 @@ public class Drivers extends JFrame{
 			iQualification3 = new JLabel();
 			iQualification3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iQualification3.setForeground(Color.white);
-			iQualification3.setBounds(575, 240, 257, 64);
+			iQualification3.setBounds(630, 240, 257, 64);
 		}
 		return iQualification3;
 	}
@@ -192,7 +192,7 @@ public class Drivers extends JFrame{
 			iPayment3 = new JLabel();
 			iPayment3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			iPayment3.setForeground(Color.white);
-			iPayment3.setBounds(575, 260, 257, 64);
+			iPayment3.setBounds(630, 260, 257, 64);
 		}
 		return iPayment3;
 	}
@@ -330,7 +330,7 @@ public class Drivers extends JFrame{
 	private JButton getbChooseDriver2() {
 		if(bChooseDriver2==null) {
 			bChooseDriver2 = new JButton("Choose driver");
-			bChooseDriver2.setBounds(315, 360, 155, 21);
+			bChooseDriver2.setBounds(315, 360, 115, 21);
 			bChooseDriver2.setBackground(Color.black);
 			bChooseDriver2.setForeground(Color.gray);
 		}
@@ -340,7 +340,7 @@ public class Drivers extends JFrame{
 	private JButton getbChooseDriver3() {
 		if(bChooseDriver3==null) {
 			bChooseDriver3 = new JButton("Choose driver");
-			bChooseDriver3.setBounds(533, 360, 155, 21);
+			bChooseDriver3.setBounds(533, 360, 115, 21);
 			bChooseDriver3.setBackground(Color.black);
 			bChooseDriver3.setForeground(Color.gray);
 		}

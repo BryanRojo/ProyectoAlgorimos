@@ -63,7 +63,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
-		this.road = new Road(this.values);
 		init();
 		
 	}
@@ -269,6 +268,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible11() {
+		
 		this.road = new Road(this.values);
 		road.setVisible(true);
 		admin.setVisible(false);

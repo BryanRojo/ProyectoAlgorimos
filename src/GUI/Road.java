@@ -20,7 +20,7 @@ public class Road extends JFrame{
 	private JLabel lFrom,lTo, lDistance, lInstruction;
 	private JComboBox cPlace, cDestiny;
 	private JTextField tDistance;
-
+	
 	public Road(String[] values) {
 		
 		add(getBLogin());

@@ -71,7 +71,7 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 		vertex.add(new Vertex(x, y, places));
 	}
 	
-	public void createArista() {
+	public void createArista(int x, int y, int x2, int y2) {
 		arista.add(new Arista(x, y, x2,y2));
 	}
 	
@@ -96,22 +96,20 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 			System.out.println("g"+this.cont);
 		}else {			
 			
-			if(this.cont3 < this.vertexLen+this.vertexLen+2) {
-			System.out.println("Haga click");
-			this.cont3 +=1;
-			if(ca == 0) {
-				this.x = e.getX();
-				this.y = e.getY();
-				this.ca =1;
-				System.out.println("Otra vez");
-			}else {	
-				this.x2 = e.getX();
-				this.y2 = e.getY();
-				//createArista(x2,y2,x,y);
-				this.ca = 0;
-			}	
+			if(this.cont3 < this.vertexLen) {
+				this.cont3 +=1;
+				if(ca == 0) {
+					this.x = e.getX();
+					this.y = e.getY();
+					this.ca =1;
+				}else {	
+					this.x2 = e.getX();
+					this.y2 = e.getY();
+					createArista(x2,y2,x,y);
+					this.ca = 0;
+				}	
 			}else {
-				JOptionPane.showInputDialog(null, "All roads were laid");
+				JOptionPane.showMessageDialog(null, "All roads were laid");
 			}
 		}
 	}

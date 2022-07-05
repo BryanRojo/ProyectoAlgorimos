@@ -16,7 +16,7 @@ public class Drivers extends JFrame{
 	private JLabel iName,iBrand,iQualification,iPayment;
 	private JLabel iName2,iBrand2,iQualification2,iPayment2;
 	private JLabel iName3,iBrand3,iQualification3,iPayment3;
-	private JButton bChooseDriver1,bChooseDriver2,bChooseDriver3, bBack;
+	private JButton bChooseDriver1,bChooseDriver2,bChooseDriver3, bBack, bReturn;
 	
 	private PanelChooseDriver panel = new PanelChooseDriver();
 	
@@ -26,6 +26,7 @@ public class Drivers extends JFrame{
 		panel.add(getbChooseDriver2());
 		panel.add(getbChooseDriver3());
 		panel.add(getbBack());
+		panel.add(getBReturn());
 		
 		panel.add(getLName());
 		panel.add(getLBrand());
@@ -66,7 +67,7 @@ public class Drivers extends JFrame{
 	}
 
 
-	private JButton getbBack() {
+	public JButton getbBack() {
 		if(bBack == null) {
 			bBack = new JButton();
 			bBack.setForeground(Color.white);
@@ -75,6 +76,19 @@ public class Drivers extends JFrame{
 			bBack.setBounds(693,410,89,30);
 		}
 		return bBack;
+	}
+	
+	public JButton getBReturn() {
+		if(bReturn == null) {
+			bReturn = new JButton();
+			bReturn.setForeground(Color.white);
+			bReturn.setBackground(Color.black);
+			bReturn.setText("Return");
+			bReturn.setBorder(null);
+			bReturn.setBounds(0,410,80,20);
+			bReturn.setFont(new Font("Calibri", Font.BOLD, 14));
+		}
+		return bReturn;
 	}
 	
 	public JLabel getIName() {
@@ -317,7 +331,7 @@ public class Drivers extends JFrame{
 		return lPayment3;
 	}
 
-	private JButton getbChooseDriver1() {
+	public JButton getbChooseDriver1() {
 		if(bChooseDriver1==null) {
 			bChooseDriver1 = new JButton("Choose driver");
 			bChooseDriver1.setBounds(120, 360, 115, 21);
@@ -327,7 +341,7 @@ public class Drivers extends JFrame{
 		return bChooseDriver1;
 	}
 	
-	private JButton getbChooseDriver2() {
+	public JButton getbChooseDriver2() {
 		if(bChooseDriver2==null) {
 			bChooseDriver2 = new JButton("Choose driver");
 			bChooseDriver2.setBounds(315, 360, 115, 21);
@@ -337,7 +351,7 @@ public class Drivers extends JFrame{
 		return bChooseDriver2;
 	}
 	
-	private JButton getbChooseDriver3() {
+	public JButton getbChooseDriver3() {
 		if(bChooseDriver3==null) {
 			bChooseDriver3 = new JButton("Choose driver");
 			bChooseDriver3.setBounds(533, 360, 115, 21);

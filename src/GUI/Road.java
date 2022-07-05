@@ -17,11 +17,11 @@ import javax.swing.border.EmptyBorder;
 public class Road extends JFrame{
 
 	private JButton bLogin, bBack, bReturn;
-	private JLabel lFrom,lTo, lDistance, lInstruction;
+	private JLabel lFrom,lTo, lDistance, lInstruction3;
 	private JComboBox cPlace, cDestiny;
 	private JTextField tDistance;
 	
-	public Road(String[] values) {
+	public Road() {
 		
 		add(getBLogin());
 		add(getCPlace());
@@ -31,7 +31,7 @@ public class Road extends JFrame{
 		add(getLFrom());
 		add(getLTo());
 		add(getLDistance());
-		add(getLInstruction());
+		add(getLInstruction3());
 		
 		add(getBBack());
 		add(getBReturn());
@@ -42,16 +42,17 @@ public class Road extends JFrame{
 		getContentPane().setBackground(Color.black);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setVisible(true);
 	
 	}
 	
-	public JLabel getLInstruction() {
-		if(lInstruction == null) {
-			lInstruction = new JLabel("ADD ADDRESSES");
-			lInstruction.setFont(new Font("Tahoma", Font.BOLD, 28));
-			lInstruction.setBounds(100, 10, 423, 76);
+	public JLabel getLInstruction3() {
+		if(lInstruction3 == null) {
+			lInstruction3 = new JLabel("ADD ADDRESSES");
+			lInstruction3.setFont(new Font("Tahoma", Font.BOLD, 28));
+			lInstruction3.setBounds(100, 10, 423, 76);
 		}
-		return lInstruction;
+		return lInstruction3;
 	}
 	
 	public JLabel getLFrom() {

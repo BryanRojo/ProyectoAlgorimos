@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -14,11 +15,12 @@ import javax.swing.JTextField;
 
 public class Administrator extends JFrame{
 	
-	private JButton bSave, bSave2, bBack, bReturn;
-	private JTextField tNumberPlaces;
-	private JLabel lInstruction,lInstruction2;
+	private JButton bSave, bSave2, bBack, bReturn, bLogin, bGoBack, bNext;
+	private JTextField tNumberPlaces, tDistance;
+	private JLabel lInstruction,lInstruction2,lFrom,lTo, lDistance, lInstruction3;
 	private JTextArea aPlaces;
 	private JScrollPane scrollPane;
+	private JComboBox cPlace, cDestiny;
 
 	public Administrator() {
 		
@@ -30,8 +32,20 @@ public class Administrator extends JFrame{
 		add(getScrollPane());
 		add(getLInstruction2());
 		
+		add(getBLogin());
+		add(getCPlace());
+		add(getCDestiny());
+		add(getTDistance());
+		
+		add(getLFrom());
+		add(getLTo());
+		add(getLDistance());
+		add(getLInstruction3());
+		
 		add(getBBack());
 		add(getBReturn());
+		add(getBGoBack());
+		add(getBNext());
 		
 		setLayout(null);
 		setTitle("Administrator");
@@ -122,6 +136,113 @@ public class Administrator extends JFrame{
 		return scrollPane;
 	}
 	
+
+	public JLabel getLInstruction3() {
+		if(lInstruction3 == null) {
+			lInstruction3 = new JLabel("ADD ADDRESSES");
+			lInstruction3.setFont(new Font("Tahoma", Font.BOLD, 20));
+			lInstruction3.setBounds(50, 10, 200, 30);
+			lInstruction3.setVisible(false);
+		}
+		return lInstruction3;
+	}
+	
+	public JLabel getLFrom() {
+		if(lFrom == null) {
+			lFrom = new JLabel();
+			lFrom.setForeground(Color.white);
+			lFrom.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lFrom.setBounds(10, 50, 80, 20);
+			lFrom.setVisible(false);
+		}
+		return lFrom;
+	}
+	
+	public JLabel getLTo() {
+		if(lTo == null) {
+			lTo = new JLabel();
+			lTo.setForeground(Color.white);
+			lTo.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lTo.setBounds(210, 50, 80, 25);
+			lTo.setVisible(false);
+		}
+		return lTo;
+	}
+	
+	public JLabel getLDistance() {
+		if(lDistance == null) {
+			lDistance = new JLabel();
+			lDistance.setForeground(Color.white);
+			lDistance.setFont(new Font("Tahoma", Font.BOLD, 12));
+			lDistance.setBounds(110, 50, 80, 25);
+			lDistance.setVisible(false);
+		}
+		return lDistance;
+	}
+	
+	
+	public JComboBox getCPlace() {
+		if(cPlace==null) {
+			cPlace = new JComboBox();
+			cPlace.setBounds(0, 100, 85, 21);
+			cPlace.setVisible(false);
+		}
+		return cPlace;
+	}
+	
+	public JComboBox Place() {
+		return cPlace;
+	}
+	
+	public JComboBox getCDestiny() {
+		if(cDestiny==null) {
+			cDestiny = new JComboBox();
+			cDestiny.setBounds(200, 100, 85, 21);
+			cDestiny.setVisible(false);
+		}
+		return cDestiny;
+	}
+	
+	public JComboBox destiny() {
+		return cDestiny;
+	}
+	
+	public JButton getBLogin() {
+		if (bLogin == null) {
+			bLogin = new JButton("Save");
+			bLogin.setBackground(Color.white);
+			bLogin.setForeground(Color.black);
+			bLogin.setBorder(null);
+			bLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
+			bLogin.setBounds(100, 140, 100, 25);
+			bLogin.setVisible(false);
+		}
+		return bLogin;
+	}
+	
+	public JButton getBNext() {
+		if (bNext == null) {
+			bNext = new JButton("Next");
+			bNext.setBackground(Color.white);
+			bNext.setForeground(Color.black);
+			bNext.setBorder(null);
+			bNext.setFont(new Font("Tahoma", Font.BOLD, 19));
+			bNext.setBounds(100, 180, 115, 25);
+			bNext.setVisible(false);
+		}
+		return bNext;
+	}
+	
+	public JTextField getTDistance() {
+		if(tDistance==null) {
+			tDistance = new JTextField();
+			tDistance.setBounds(100, 100, 80, 19);
+			tDistance.setColumns(10);
+			tDistance.setVisible(false);
+		}
+		return tDistance;
+	}	
+	
 	public JButton getBReturn() {
 		if(bReturn == null) {
 			bReturn = new JButton();
@@ -148,5 +269,19 @@ public class Administrator extends JFrame{
 			bBack.setFont(new Font("Calibri", Font.BOLD, 15));
 		}
 		return bBack;
+	}
+	
+	public JButton getBGoBack() {
+		if(bGoBack == null) {
+			bGoBack = new JButton();
+			bGoBack.setForeground(Color.white);
+			bGoBack.setBackground(Color.black);
+			bGoBack.setText("Return");
+			bGoBack.setBorder(null);
+			bGoBack.setBounds(0,190,80,20);
+			bGoBack.setFont(new Font("Calibri", Font.BOLD, 14));
+			bGoBack.setVisible(false);
+		}
+		return bGoBack;
 	}
 }

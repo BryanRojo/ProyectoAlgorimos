@@ -68,6 +68,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.arista = new ArrayList<>();
 		init();
 		init2();
+		init3();
 		
 	}
 	
@@ -141,8 +142,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			if(split[i] != null) {
 				principal.getTStart().addItem(split[i]);
 				principal.getTDestiny().addItem(split[i]);
-				road.getCPlace().addItem(split[i]);
-				road.getCDestiny().addItem(split[i]);
+				admin.getCPlace().addItem(split[i]);
+				admin.getCDestiny().addItem(split[i]);
 	        } 
 		}
 	}
@@ -252,6 +253,18 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible5() {
+		admin.getBLogin().setVisible(false);
+		admin.getCPlace().setVisible(false);
+		admin.getCDestiny().setVisible(false);
+		admin.getTDistance().setVisible(false);
+		
+		admin.getLFrom().setVisible(false);
+		admin.getLTo().setVisible(false);
+		admin.getLDistance().setVisible(false);
+		admin.getLInstruction3().setVisible(false);
+		admin.getBGoBack().setVisible(false);
+		admin.getBNext().setVisible(false);
+		
 		admin.getScrollPane().setVisible(true);
 		admin.getLInstruction2().setVisible(true);
 		admin.getBSave2().setVisible(true);
@@ -263,6 +276,18 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible6() {
+		admin.getBLogin().setVisible(false);
+		admin.getCPlace().setVisible(false);
+		admin.getCDestiny().setVisible(false);
+		admin.getTDistance().setVisible(false);
+		
+		admin.getLFrom().setVisible(false);
+		admin.getLTo().setVisible(false);
+		admin.getLDistance().setVisible(false);
+		admin.getLInstruction3().setVisible(false);
+		admin.getBGoBack().setVisible(false);
+		admin.getBNext().setVisible(false);
+		
 		admin.getScrollPane().setVisible(false);
 		admin.getLInstruction2().setVisible(false);
 		admin.getBSave2().setVisible(false);
@@ -285,10 +310,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		//road.setVisible(false);
 	}
 	
-	private void visible9() {
-		admin.setVisible(false);
-		map = new Map(this.vertexLength, this.values);
-	}
 	
 	private void visible10(){
 		map.setVisible(false);
@@ -296,12 +317,52 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	
 	private void visible11() {
 		
-		this.road = new Road(this.values);
-		road.setVisible(true);
+		this.road = new Road();
+		//road.setVisible(true);
 		admin.setVisible(false);
 		
 	}
 	
+	private void visible12() {
+		principal.setVisible(true);
+		drivers.setVisible(false);
+	}
+	
+	private void visible13() {
+		drivers.setVisible(false);
+		car.setVisible(true);
+	}
+	
+	private void visible14() {
+		
+		admin.getScrollPane().setVisible(false);
+		admin.getLInstruction2().setVisible(false);
+		admin.getBSave2().setVisible(false);
+		admin.getBReturn().setVisible(false);
+		
+		admin.getLInstruction().setVisible(false);
+		admin.getBSave().setVisible(false);
+		admin.getTNumberPlaces().setVisible(false);
+		
+		admin.getBLogin().setVisible(true);
+		admin.getCPlace().setVisible(true);
+		admin.getCDestiny().setVisible(true);
+		admin.getTDistance().setVisible(true);
+		
+		admin.getLFrom().setVisible(true);
+		admin.getLTo().setVisible(true);
+		admin.getLDistance().setVisible(true);
+		admin.getLInstruction3().setVisible(true);
+		admin.getBGoBack().setVisible(true);
+		admin.getBNext().setVisible(true);
+		
+	}
+	
+	
+	private void visible15() {
+		admin.setVisible(true);
+		map = new Map(this.vertexLength, this.values);
+	}
 	private void termsAndConditions() {
 		JOptionPane.showMessageDialog(null,"Application created in java language for academic purposes only, UCR 2022, business informatics.", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -409,6 +470,47 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			}
 		});
 		
+		
+		drivers.getbChooseDriver1().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showInputDialog(null,"Sirve");
+			}
+		});
+		
+		drivers.getbChooseDriver2().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		drivers.getbChooseDriver3().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		drivers.getbBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible12();
+			}
+		});
+		
+		drivers.getBReturn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible5();
+			}
+		});
+		
 	}
 	
 	private void init2() {
@@ -444,19 +546,38 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addNode();
-				visible11();
+				visible14();
 				//visible9();
 				fillComboBox();
 			}
 		});
 		
-		road.getBLogin().addActionListener(new ActionListener() {
+		admin.getBGoBack().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) 	{			
+				visible5();
+			}
+		});
+		
+		admin.getBLogin().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addNode2();
 			}
+				
 		});
+		
+		admin.getBNext().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				visible15();
+			}
+		});
+	}
+	private void init3() {
 		
 		road.getBReturn().addActionListener(new ActionListener() {
 
@@ -465,7 +586,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				System.out.println("Return");
 				visible8();
 				visible6();
-				
 			}
 		});
 		
@@ -474,6 +594,14 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				visible7();
+			}
+		});
+		
+		road.getBLogin().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addNode2();
 			}
 		});
 		

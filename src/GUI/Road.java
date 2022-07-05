@@ -24,8 +24,8 @@ public class Road extends JFrame{
 	public Road(String[] values) {
 		
 		add(getBLogin());
-		add(getCPlace(values));
-		add(getCDestiny(values));
+		add(getCPlace());
+		add(getCDestiny());
 		add(getTDistance());
 		
 		add(getLFrom());
@@ -85,10 +85,9 @@ public class Road extends JFrame{
 	}
 	
 	
-	public JComboBox getCPlace(String[] values) {
+	public JComboBox getCPlace() {
 		if(cPlace==null) {
 			cPlace = new JComboBox();
-			cPlace.setModel(new DefaultComboBoxModel(values));
 			cPlace.setBounds(30, 133, 99, 21);
 		}
 		return cPlace;
@@ -98,10 +97,9 @@ public class Road extends JFrame{
 		return cPlace;
 	}
 	
-	public JComboBox getCDestiny(String[] values) {
+	public JComboBox getCDestiny() {
 		if(cDestiny==null) {
 			cDestiny = new JComboBox();
-			cDestiny.setModel(new DefaultComboBoxModel(values));
 			cDestiny.setBounds(300, 133, 99, 21);
 		}
 		return cDestiny;
@@ -110,6 +108,7 @@ public class Road extends JFrame{
 	public JComboBox destiny() {
 		return cDestiny;
 	}
+	
 	public JButton getBLogin() {
 		if (bLogin == null) {
 			bLogin = new JButton("Guardar");

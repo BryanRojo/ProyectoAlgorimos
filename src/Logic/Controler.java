@@ -141,6 +141,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			if(split[i] != null) {
 				principal.getTStart().addItem(split[i]);
 				principal.getTDestiny().addItem(split[i]);
+				road.getCPlace().addItem(split[i]);
+				road.getCDestiny().addItem(split[i]);
 	        } 
 		}
 	}
@@ -443,7 +445,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				visible4();
-				llenarDatos();
+				fillData();
 			}
 		});
 		

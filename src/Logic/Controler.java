@@ -210,6 +210,18 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		}
 	}
 	
+	private void JMessage() {
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Marvin\n Car: Toyota, \nStarts: 4.0, \nPayment method: efectivo");
+	}
+	
+	private void JMessage2() {
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "María\n Car: Nissan, \nStarts: 4.5, \nPayment method: tarjeta");
+	}
+	
+	private void JMessage3() {
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Rodrigo\n Car: BMW, \nStarts: 4.9, \nPayment method: efectivo");
+	}
+	
 	private void goBack() {
 		newUser.setVisible(false);
 		principal.setVisible(false);
@@ -470,7 +482,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showInputDialog(null,"Sirve");
+				JMessage();
 			}
 		});
 		
@@ -478,7 +490,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				JMessage2();
 			}
 		});
 		
@@ -486,7 +498,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				JMessage3();
 			}
 		});
 		

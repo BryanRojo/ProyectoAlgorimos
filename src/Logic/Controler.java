@@ -17,6 +17,7 @@ import Domain.User;
 import Domain.Vertex;
 import GUI.Administrator;
 import GUI.Car;
+import GUI.Drivers;
 import GUI.Map;
 import GUI.NewUser;
 import GUI.PanelAdministrator;
@@ -37,6 +38,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private CarImage image;
 	private Administrator admin;
 	private Road road;
+	private Drivers drivers;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
@@ -57,6 +59,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.type = new CarType();
 		this.car = new Car();
 		this.admin = new Administrator();
+		this.drivers=new Drivers();
 		
 		this.data = new String[5];
 		this.aristas = "";
@@ -97,6 +100,21 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		file.saveNamePassword(this.name, this.password);
 		JOptionPane.showMessageDialog(null, "Saved successfully.\nYour user is: "+ user.getUserName()+"\nYour password is: "+user.getPassword());	
 		}
+	}
+	
+	public void llenarDatos() {
+		this.drivers.getIName().setText("hola");
+		this.drivers.getIBrand().setText("hola");
+		this.drivers.getIQualification().setText("hola");
+		this.drivers.getIPayment().setText("hola");
+		this.drivers.getIName2().setText("hola");
+		this.drivers.getIBrand2().setText("hola");
+		this.drivers.getIQualification2().setText("hola");
+		this.drivers.getIPayment2().setText("hola");
+		this.drivers.getIName3().setText("hola");
+		this.drivers.getIBrand3().setText("hola");
+		this.drivers.getIQualification3().setText("hola");
+		this.drivers.getIPayment3().setText("hola");
 	}
 	
 	private void verifyUser() {
@@ -221,7 +239,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible4() {
-		principal.setVisible(true);
+		drivers.setVisible(true);
 		car.setVisible(false);
 	}
 	
@@ -425,6 +443,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				visible4();
+				llenarDatos();
 			}
 		});
 		

@@ -102,19 +102,19 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		}
 	}
 	
-	public void llenarDatos() {
-		this.drivers.getIName().setText("hola");
-		this.drivers.getIBrand().setText("hola");
-		this.drivers.getIQualification().setText("hola");
-		this.drivers.getIPayment().setText("hola");
-		this.drivers.getIName2().setText("hola");
-		this.drivers.getIBrand2().setText("hola");
-		this.drivers.getIQualification2().setText("hola");
-		this.drivers.getIPayment2().setText("hola");
-		this.drivers.getIName3().setText("hola");
-		this.drivers.getIBrand3().setText("hola");
-		this.drivers.getIQualification3().setText("hola");
-		this.drivers.getIPayment3().setText("hola");
+	public void fillData() {
+		this.drivers.getIName().setText("Marvin");
+		this.drivers.getIBrand().setText("Toyota");
+		this.drivers.getIQualification().setText("4,0");
+		this.drivers.getIPayment().setText("Efectivo");
+		this.drivers.getIName2().setText("Maria");
+		this.drivers.getIBrand2().setText("Nissan");
+		this.drivers.getIQualification2().setText("4,5");
+		this.drivers.getIPayment2().setText("Tarjeta");
+		this.drivers.getIName3().setText("Rodrigo");
+		this.drivers.getIBrand3().setText("BMW");
+		this.drivers.getIQualification3().setText("4,9");
+		this.drivers.getIPayment3().setText("Efectivo");
 	}
 	
 	private void verifyUser() {

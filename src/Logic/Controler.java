@@ -44,6 +44,8 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private String password = "", name = "", aristass;
 	private boolean condition = false, condition2 = false;
 	private String []data, values, aristas;
+	private String placeA, placeB;
+	private int road;
 	
 	private GrafoListaAdyacencia graph;
 	
@@ -104,15 +106,15 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.drivers.getIName().setText("Marvin");
 		this.drivers.getIBrand().setText("Toyota");
 		this.drivers.getIQualification().setText("4,0");
-		this.drivers.getIPayment().setText("Efectivo");
+		this.drivers.getIPayment().setText("Cash");
 		this.drivers.getIName2().setText("Maria");
 		this.drivers.getIBrand2().setText("Nissan");
 		this.drivers.getIQualification2().setText("4,5");
-		this.drivers.getIPayment2().setText("Tarjeta");
+		this.drivers.getIPayment2().setText("Card");
 		this.drivers.getIName3().setText("Rodrigo");
 		this.drivers.getIBrand3().setText("BMW");
 		this.drivers.getIQualification3().setText("4,9");
-		this.drivers.getIPayment3().setText("Efectivo");
+		this.drivers.getIPayment3().setText("Cash");
 	}
 	
 	private void verifyUser() {
@@ -143,6 +145,11 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				admin.getCDestiny().addItem(split[i]);
 	        } 
 		}
+	}
+	
+	private void selected() {
+		this.placeA = (String) principal.getTStart().getSelectedItem();
+		this.placeB = (String) principal.getTDestiny().getSelectedItem();
 	}
 	
 	private void extractData() {
@@ -182,7 +189,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			
 			e1.printStackTrace();
 		}
-	
 	}
 	
 	private void addNode2() {
@@ -196,7 +202,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 				this.aristass+= Integer.parseInt(admin.getTDistance().getText())+ ",";
 				
 				this.aristas = this.aristass.split(",");
-				JOptionPane.showMessageDialog(null, "Path was added: "+((String)admin.Place().getSelectedItem()+ (String)admin.destiny().getSelectedItem()+ Integer.parseInt(admin.getTDistance().getText())+" whit"+admin.getTDistance().getText()+" Km."));
+				JOptionPane.showMessageDialog(null, "Path was added: "+((String)admin.Place().getSelectedItem()+" - "+(String)admin.destiny().getSelectedItem()+ Integer.parseInt(admin.getTDistance().getText())+" whit "+admin.getTDistance().getText()+" Km."));
 				admin.getTDistance().setText("");
 				
 			} catch (NumberFormatException | GrafoException e1) {
@@ -209,17 +215,17 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			this.vertex.get(i).drawVertex(g);
 		}
 	}
-	
+
 	private void JMessage() {
-		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Marvin\n Car: Toyota, \nStarts: 4.0, \nPayment method: efectivo");
-	}
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Marvin\n Car: Toyota, \nStarts: 4.0, \nPayment method: cash"+"\nStart: "+this.placeA+"\nDestiny: "+this.placeB);
+	} 
 	
 	private void JMessage2() {
-		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "María\n Car: Nissan, \nStarts: 4.5, \nPayment method: tarjeta");
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "María\n Car: Nissan, \nStarts: 4.5, \nPayment method: card"+"\nStart: "+this.placeA+"\nDestiny: "+this.placeB);
 	}
 	
 	private void JMessage3() {
-		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Rodrigo\n Car: BMW, \nStarts: 4.9, \nPayment method: efectivo");
+		JOptionPane.showMessageDialog(null,"User: "+this.name+ "\nUber selected: " + "\nChofer selected: "+ "Rodrigo\n Car: BMW, \nStarts: 4.9, \nPayment method: cash"+"\nStart: "+this.placeA+"\nDestiny: "+this.placeB);
 	}
 	
 	private void goBack() {
@@ -311,13 +317,11 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private void visible7() {
 		principal.setVisible(true);
 		admin.setVisible(false);
-	//	road.setVisible(false);
 	}
 	
 	private void visible8() {
 		admin.setVisible(true);
 		principal.setVisible(false);
-		//road.setVisible(false);
 	}
 	
 	
@@ -432,6 +436,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				visible3();
+				selected();
 			}
 		});
 		

@@ -34,15 +34,17 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 	private String []value;
 	private Graphics gg;
 	private int x =0, y =0, x2 = 0, y2 =0;
+	private String[] aristas;
 
 	
-	public PanelAdministrator(int vertexLength, String []values) {
+	public PanelAdministrator(int vertexLength, String []values, String[] aristas) {
 		
 		this.addMouseListener(this);
 		this.setSize(300,400);
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
 		this.vertexLen = vertexLength;
+		this.aristas = aristas;
 		this.value = values;
 	}
 	
@@ -63,7 +65,6 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 		String places = "";
 		for( int i = this.cont; i<this.vertexLen;i++) {
 			places = this.value[i];
-			System.out.println("g"+ value[i]+ this.vertexLen);
 			this.cont +=1;
 			break;
 		}
@@ -72,7 +73,14 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 	}
 	
 	public void createArista(int x, int y, int x2, int y2) {
-		arista.add(new Arista(x, y, x2,y2));
+		String aris = "";
+		for( int i = this.cont3; i<this.aristas.length;i++) {
+			aris = this.aristas[i];
+			System.out.println("aris: "+ aris);
+			this.cont3 +=1;
+			break;
+		}
+		arista.add(new Arista(x, y, x2,y2, aris));
 	}
 	
 	public void draw() {
@@ -96,8 +104,7 @@ public class PanelAdministrator extends JPanel implements MouseListener, Runnabl
 			System.out.println("g"+this.cont);
 		}else {			
 			
-			if(this.cont3 < this.vertexLen) {
-				this.cont3 +=1;
+			if(this.cont3 < this.aristas.length) {
 				if(ca == 0) {
 					this.x = e.getX();
 					this.y = e.getY();

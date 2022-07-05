@@ -22,7 +22,6 @@ import GUI.Map;
 import GUI.NewUser;
 import GUI.PanelAdministrator;
 import GUI.Principal;
-import GUI.Road;
 import GUI.Start;
 import Graphs.GrafoException;
 import Graphs.GrafoListaAdyacencia;
@@ -37,15 +36,14 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private Car car;
 	//private CarImage image;
 	private Administrator admin;
-	private Road road;
 	private Drivers drivers;
 	private ArrayList<Vertex> vertex;
 	private ArrayList<Arista> arista;
 	
 	public int vertexLength, cont, cont2;
-	private String password = "", name = "", aristas;
+	private String password = "", name = "", aristass;
 	private boolean condition = false, condition2 = false;
-	private String []data, values;
+	private String []data, values, aristas;
 	
 	private GrafoListaAdyacencia graph;
 	
@@ -62,7 +60,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		this.drivers=new Drivers();
 	
 		this.data = new String[5];
-		this.aristas = "";
 		
 		this.vertex = new ArrayList<>();
 		this.arista = new ArrayList<>();
@@ -195,11 +192,12 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	private void addArista( String[]values) {//Panel modificador de aristas
 		
 			try {
-				addArista((String)road.Place().getSelectedItem(), (String)road.destiny().getSelectedItem(), Integer.parseInt(road.getTDistance().getText()));
-				this.aristas+= ((String)road.Place().getSelectedItem()+","+ (String)road.destiny().getSelectedItem()+","+Integer.parseInt(road.getTDistance().getText())+ "-");
+				addArista((String)admin.Place().getSelectedItem(), (String)admin.destiny().getSelectedItem(), Integer.parseInt(admin.getTDistance().getText()));
+				this.aristass+= Integer.parseInt(admin.getTDistance().getText())+ ",";
 				
-				JOptionPane.showMessageDialog(null, "Path was added: "+((String)road.Place().getSelectedItem()+ (String)road.destiny().getSelectedItem()+ Integer.parseInt(road.getTDistance().getText())+" whit"+road.getTDistance().getText()+" Km."));
-				road.getTDistance().setText("");
+				this.aristas = this.aristass.split(",");
+				JOptionPane.showMessageDialog(null, "Path was added: "+((String)admin.Place().getSelectedItem()+ (String)admin.destiny().getSelectedItem()+ Integer.parseInt(admin.getTDistance().getText())+" whit"+admin.getTDistance().getText()+" Km."));
+				admin.getTDistance().setText("");
 				
 			} catch (NumberFormatException | GrafoException e1) {
 				e1.printStackTrace();
@@ -316,9 +314,6 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	}
 	
 	private void visible11() {
-		
-		this.road = new Road();
-		//road.setVisible(true);
 		admin.setVisible(false);
 		
 	}
@@ -361,7 +356,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 	
 	private void visible15() {
 		admin.setVisible(true);
-		map = new Map(this.vertexLength, this.values);
+		map = new Map(this.vertexLength, this.values, this.aristas);
 	}
 	private void termsAndConditions() {
 		JOptionPane.showMessageDialog(null,"Application created in java language for academic purposes only, UCR 2022, business informatics.", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -578,33 +573,7 @@ public class Controler implements ActionListener, KeyListener, MouseListener{
 		});
 	}
 	private void init3() {
-		
-		road.getBReturn().addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Return");
-				visible8();
-				visible6();
-			}
-		});
-		
-		road.getBBack().addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				visible7();
-			}
-		});
-		
-		road.getBLogin().addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addNode2();
-			}
-		});
-		
 		map.getBBack().addActionListener(new ActionListener() {
 
 			@Override

@@ -9,15 +9,15 @@ public class Arista {
 	private int y;
 	private int x2;
 	private int y2;
-	private int weight;
+	private String weight;
 	
-	public Arista(int x, int y, int x2, int y2) {
+	public Arista(int x, int y, int x2, int y2, String weight) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.x2 = x2;
 		this.y2 = y2;
-	
+		this.weight = weight;
 	}
 
 	public int getX() {
@@ -52,18 +52,18 @@ public class Arista {
 		this.y2 = y2;
 	}
 
-	public int getWeight() {
+	public String getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(String weight) {
 		this.weight = weight;
 	}
 
 	public void drawVertex(Graphics g){
 		 g.setColor(Color.white);
 		 g.drawLine(x, y, x2, y2);
-		 g.drawString(""+this.weight, x, y);
+		 g.drawString(this.weight, x, y);
 		
 	 }
 	

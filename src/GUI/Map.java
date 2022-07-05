@@ -13,10 +13,10 @@ public class Map extends JFrame {
 	private PanelAdministrator panel;
 	private JButton bBack;;
 	
-	public Map(int vertexLen, String []values) {
+	public Map(int vertexLen, String []values, String []aristas) {
 		
 		System.out.println(vertexLen);
-		panel = new PanelAdministrator(vertexLen, values);
+		panel = new PanelAdministrator(vertexLen, values, aristas);
 		//panel.add(getBBack());
 		panel.setLayout(new BorderLayout(0,0));
 		panel.setBorder(new EmptyBorder(5,5,5,5));

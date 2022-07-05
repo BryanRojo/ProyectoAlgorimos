@@ -227,7 +227,7 @@ public class Administrator extends JFrame{
 			bNext.setForeground(Color.black);
 			bNext.setBorder(null);
 			bNext.setFont(new Font("Tahoma", Font.BOLD, 19));
-			bNext.setBounds(100, 180, 115, 25);
+			bNext.setBounds(100, 180, 95, 25);
 			bNext.setVisible(false);
 		}
 		return bNext;
